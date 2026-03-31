@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+dist/
+tmp/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Nx
+.nx/cache
+.nx/workspace-data
+
+# Angular
+.angular/cache
+
+# Coverage
+coverage/
+
+# Build output
+build/
+
+# Claude Code personal config
+CLAUDE.local.md
