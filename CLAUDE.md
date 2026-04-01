@@ -24,6 +24,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - PRでmainにマージ（code-reviewerエージェントがレビュー）
 - コミットメッセージ: Conventional Commits (`feat:` / `fix:` / `chore:` / `docs:` / `refactor:` / `test:`)
 
+## プロジェクト重要目標
+
+- **仮説検証型アジャイルのClaude Code実現**: 市谷聡啓「正しいものを正しく作る」で提示されている仮説検証型アジャイル（特に仮説キャンバス）を、Claude Codeとの協同で実践する。製造前の工程（仮説キャンバス → EARS要件定義 → ドメインモデル）をSkills等で仕組み化し、「正しいものを探す」プロセスをAIエージェントと共に回す
+
 ## 開発原則
 
 - 最小構成から始めて有機的に育てる。事前に「完成」させない
