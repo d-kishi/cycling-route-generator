@@ -1,0 +1,189 @@
+# =============================================================
+# 仮説キャンバス フォーマット案 v2（サンプルデータ入り）
+# =============================================================
+# このファイルはフォーマットの検討用ドラフトであり、
+# 実際のプロジェクトの仮説ではない。
+#
+# v2変更点:
+#   - 各仮説に title（一言サマリー）を追加
+#   - 各仮説に id を追加（リレーション参照用）
+#   - relations セクションを追加（仮説間の一本線）
+# =============================================================
+
+# --- メタ情報 ---
+meta:
+  project: "サイクリングルート自動生成サービス"
+  version: 1                    # キャンバスの改訂番号
+  updated: "2026-04-03"
+  phase: "draft"                # draft / validating / converged
+
+# --- 仮説の根源（Phase 2全体のアンカー） ---
+root:
+  type: "課題"                  # 目的 / 課題 / 状況 から選択
+  statement: |
+    サイクリストは新しいルートを走りたいが、
+    自力でルートを開拓するコストが高く、
+    結果として同じルートを繰り返しがちである。
+  rationale: |
+    PO自身が中級ホビーサイクリストとして実感している課題。
+    100km程度は抵抗なく走るが、新規ルート開拓には
+    地図の事前調査・標高確認・安全性チェックなどの手間がかかる。
+
+# --- 仮説キャンバス本体 ---
+canvas:
+
+  # ===========================
+  # 顧客/ユーザ側
+  # ===========================
+  customer:
+
+    situation:
+      id: C-SIT
+      title: "週末ライドのルート探しに時間を費やしている"
+      hypothesis: |
+        東京周辺のホビーサイクリストは、週末ライドのルート選びに
+        30分〜1時間程度の事前調査時間を費やしている。
+      confidence: low
+      evidence: []
+
+    overt_problem:
+      id: C-OVR
+      title: "同じルートの繰り返しに飽きている"
+      hypothesis: |
+        毎回同じルートに飽きているが、新しいルートを探すのが面倒で
+        結局走り慣れた道を選んでしまう。
+      confidence: medium
+      evidence:
+        - source: "PO実体験"
+          detail: "自身が週末ライドで感じている課題"
+        - source: "サイクリング仲間との会話"
+          detail: "同様の不満を3名から聞いている（非公式）"
+
+    latent_problem:
+      id: C-LAT
+      title: "実力に合わないルート選択による消耗"
+      hypothesis: |
+        獲得標高や路面状況を考慮したルート選びができておらず、
+        実力に合わないルートで消耗している可能性がある。
+      confidence: low
+      evidence: []
+
+    alternatives:
+      id: C-ALT
+      title: "Strava/ブログ参考だが自動生成手段がない"
+      hypothesis: |
+        現在はStrava/RideWithGPSの人気ルート機能や、
+        他のサイクリストのブログを参考にしている。
+        しかし「自分の条件に合ったルート」を自動生成する手段はない。
+      confidence: medium
+      evidence:
+        - source: "PO自身の利用経験"
+          detail: "Stravaの人気セグメントを参考にしているが、ルート全体の生成はできない"
+
+  # ===========================
+  # 提供者側
+  # ===========================
+  provider:
+
+    purpose:
+      id: P-PUR
+      title: "最小入力で満足ルートを手に入れる"
+      hypothesis: |
+        サイクリストが「今日はこういう走りがしたい」と思った時に、
+        最小限の入力で満足できるルートを手に入れられる状態を作る。
+      confidence: medium
+      evidence:
+        - source: "PO自身のペイン"
+          detail: "毎週末のルート選びに感じるフラストレーション"
+
+    vision:
+      id: P-VIS
+      title: "走ることに集中できる世界"
+      hypothesis: |
+        サイクリストが走ることそのものに集中できる世界。
+        ルート計画の手間をゼロに近づける。
+      confidence: low
+      evidence: []
+
+    proposed_value:
+      id: P-VAL
+      title: "条件入力→複数ルート自動生成→地図比較"
+      hypothesis: |
+        方角・距離・獲得標高などの条件を入力するだけで、
+        複数のルート候補を自動生成し、地図上で比較できる。
+      confidence: medium
+      evidence:
+        - source: "既存ツール分析"
+          detail: "BRouterの技術的実現可能性を確認済み"
+
+    solution:
+      id: P-SOL
+      title: "BRouter+Leaflet Webアプリ + エクスポート"
+      hypothesis: |
+        Webアプリケーションとして提供。
+        BRouterベースのルーティングエンジンで
+        条件に合った複数ルートを生成し、Leaflet地図上に表示。
+        .tcx/.gpx形式でエクスポート可能。
+      confidence: medium
+      evidence:
+        - source: "技術調査"
+          detail: "BRouter + Leaflet + OpenStreetMapの組み合わせで技術的に実現可能"
+
+    advantage:
+      id: P-ADV
+      title: "PO=ユーザ + BRouterセルフホストの自由度"
+      hypothesis: |
+        PO自身がターゲットユーザであり、実体験に基づいた
+        フィードバックループを高速で回せる。
+        BRouterのセルフホストにより、カスタムルーティングプロファイルの
+        自由度が高い。
+      confidence: low
+      evidence: []
+
+  # ===========================
+  # ビジネス側（任意。使用するかは未決定）
+  # ===========================
+  business:
+    channel: null               # null = 未検討
+    metrics: null
+    revenue: null
+    market_size: null
+
+# --- 仮説間のリレーション（仮説の一本線） ---
+# from → to で「fromの仮説がtoの仮説を支える/導く」関係を表す
+# type: supports（支持）/ derives（導出）/ conflicts（矛盾）
+relations:
+  - from: C-SIT
+    to: C-OVR
+    type: supports
+    note: "ルート探しに時間がかかる状況が、同じルートの繰り返しという課題を生んでいる"
+
+  - from: C-OVR
+    to: P-PUR
+    type: derives
+    note: "顕在課題から目的が導出される"
+
+  - from: C-LAT
+    to: P-VAL
+    type: derives
+    note: "潜在課題（実力不一致）が、標高等の条件指定による自動生成の価値を裏付ける"
+
+  - from: C-ALT
+    to: P-VAL
+    type: supports
+    note: "既存手段では自動生成ができないことが、提案価値の差別化根拠になる"
+
+  - from: P-PUR
+    to: P-VIS
+    type: derives
+    note: "目的の延長線上にビジョンがある"
+
+  - from: P-VAL
+    to: P-SOL
+    type: derives
+    note: "提案価値を実現する具体的手段"
+
+  - from: P-ADV
+    to: P-SOL
+    type: supports
+    note: "優位性がソリューションの実現可能性を支える"
