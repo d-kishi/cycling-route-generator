@@ -2,6 +2,7 @@
 name: spec-requirements
 description: EARS形式で要件定義書(doc/requirements.md)を生成・修正するスキル。スラッシュコマンド `/spec-requirements` で起動する。
 model: opus
+disable-model-invocation: true
 ---
 
 # spec-requirements: EARS形式 要件定義スキル
