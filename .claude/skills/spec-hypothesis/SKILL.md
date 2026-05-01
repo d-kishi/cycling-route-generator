@@ -51,32 +51,33 @@ disable-model-invocation: true
 
 CLAUDE.md と doc/ 配下を読み、プロジェクトの現状を把握する。既に `doc/hypothesis-validation/hypothesis-canvas.yaml` が存在する場合は上書きではなく `/spec-hypothesis update` を案内する。
 
-### Step 2: ペルソナの設定
+### Step 2: ペルソナの選択
 
-ユーザに「どのような視点からこの仮説を検証したいか」を尋ね、ペルソナを決定する。
+仮説の検証視点となるペルソナを選択する。
 
-- ペルソナはプロジェクトのドメインに応じて自由に設定可能
-- 推奨 2-4体
-- ユーザ自身が該当するペルソナも含めることを推奨（自分の視点を客観化する機会）
+#### 前提
 
-決定したペルソナ構成を `doc/hypothesis-validation/personas.yaml` に記録する。フォーマット:
+ペルソナの真実の源(source of truth)は `.claude/personas/persona-<id>.yaml`(`/persona` スキルが生成)。
+本スキルではペルソナの新規生成・編集は行わない。ペルソナを増やしたい場合は `/persona` を起動する。
 
-```yaml
-personas:
-  - id: persona-beginner
-    name: "ビギナーサイクリスト"
-    description: "週末に30km程度を走る初心者。安全性とシンプルさを重視"
-    added_at: "2026-04-06"        # 追加日
-    added_reason: "初期設定"       # 追加理由
+#### 手順
 
-  - id: persona-hobby
-    name: "中級ホビーサイクリスト"
-    description: "100km程度を抵抗なく走る。PO自身が該当"
-    added_at: "2026-04-06"
-    added_reason: "初期設定（PO相当）"
-```
+1. `.claude/personas/` ディレクトリを確認する
+   - 1体も存在しない場合: 「ペルソナが未形成です。`/persona` で1体以上のペルソナを作成してから再実行してください」と案内し、本スキルを終了する
+2. 既存ペルソナを一覧化してPOに提示する
+   - 各 yaml の `id` / `name` / `description` および `attributes` の主要フィールド(動機、経験レベル、典型シナリオ、月間距離等)を抜粋表示する。全文は提示しない(コンテキスト圧迫を避けるため)
+3. POに「このキャンバス議論に参加させるペルソナ」を選択させる
+   - AskUserQuestion (multiSelect=true) を使用
+   - 推奨 2-4体(debate品質を担保しつつ Round 1 並列起動コストを抑える)
+   - ペルソナ数が4体を超え1画面に収まらない場合は、関連性で分けた2画面の AskUserQuestion で対応する
+4. 選択結果は中間成果物 `draft-NNN.md`(Step 4で生成)と `debate-NNN.md`(Step 5で生成)に「参加ペルソナ」として記録する。本スキル側ではペルソナの専用一覧ファイルは作成しない。
 
-このファイルはペルソナの設定・追加・変更のたびに更新する。
+#### 不足がある場合
+
+POが「他の視点も必要だが該当ペルソナがない」と判断した場合:
+
+- 案内: 「`/persona` で追加生成してから本スキルを再実行してください」
+- 本スキルを一旦終了し、`/persona` 側にバトンを渡す
 
 ### Step 3: 仮説の起点（根源）の議論
 
@@ -140,10 +141,16 @@ Step 2で設定したペルソナによる議論を実行する。
 各ペルソナAgentを並列起動（Agent Teams, subagent_type: general-purpose, model: opus）し、各自の視点から仮説のアイデアを独立に出させる。
 
 **各ペルソナAgentに渡す情報:**
-- ペルソナの説明（役割、経験レベル、利用シーン）
-- 仮説キャンバスの全文（YAML）
-- 仮説の根源（root）— これがアンカーであることを明示
-- 指示: 「このペルソナとして、あなた自身の課題・欲求・利用シーンに基づいて仮説のアイデアを出してほしい。既存の仮説への意見もあれば添えてよいが、最も重要なのは新しいアイデアの提案である。根源から大幅に逸脱する提案にはその旨を明記すること」
+- 該当ペルソナの `.claude/personas/persona-<id>.yaml` の**全文**(attributes + checklist + broadlistening_summary を含む)
+- 仮説キャンバスの全文(YAML)
+- 仮説の根源(root) — これがアンカーであることを明示
+- 指示: 「あなたは `.claude/personas/persona-<id>.yaml` で定義されたペルソナである。
+  - `attributes` に書かれた動機・経験レベル・利用シーン・カルチャーを徹底的にロールプレイすること
+  - `broadlistening_summary` の各カテゴリに含まれる一次情報・他者の体験談・自身の悩み(出典付き)を出発点として、あなた自身の課題・欲求・利用シーンに基づくアイデアを出すこと
+  - 既存の仮説への意見も添えてよいが、最も重要なのは新しいアイデアの提案である
+  - 根源から大幅に逸脱する提案にはその旨を明記すること」
+
+ペルソナAgentに persona-<id>.yaml の全文を渡すのは、debateにおける**発言の交換可能性(失敗サインF3)** を構造的に防ぐため。`broadlistening_summary` の固有エピソードと出典がロールプレイの粘度を高め、ペルソナ間の差別化が言葉の表層ではなく一次情報の出所まで遡って機能する。
 
 **Round 1終了時のファシリテータの作業:**
 - 各ペルソナのアイデアを一覧化
@@ -216,7 +223,8 @@ Miro描画時の構成:
 
 以下を読み込む:
 - `doc/hypothesis-validation/hypothesis-canvas.yaml` — 既存キャンバス。存在しない場合は `/spec-hypothesis` での新規作成を案内する
-- `doc/hypothesis-validation/personas.yaml` — 現在のペルソナ構成。前回どのメンバーで議論したかを把握する
+- `.claude/personas/persona-*.yaml` — 現在利用可能なペルソナ群 (真実の源)
+- `doc/hypothesis-validation/debate-NNN.md` の最新ファイル — 前回どのペルソナで議論したかを把握する。複数ある場合は最大番号のものを採用
 
 ### Step 2: 更新トリガーの確認
 
@@ -235,7 +243,7 @@ Miro描画時の構成:
 
 - インタビュー結果追加: 該当するhypothesisのevidenceリストに追加。confidenceの見直し
 - PO意思による修正: ユーザとの対話で修正内容を確認
-- ペルソナ追加: 新しいペルソナを `doc/hypothesis-validation/personas.yaml` に追加記録した上で設定に反映
+- ペルソナ追加: 追加したいペルソナが `.claude/personas/` に未生成の場合、`/persona` で先に生成してから本スキルに戻る。既存ペルソナを debate 参加メンバーに加えるだけなら、Step 4(debate)実行前にメンバー再選択するだけでよい(本スキル側で専用一覧ファイルは持たない)
 
 ### Step 4: ペルソナdebate
 
@@ -276,7 +284,7 @@ Miro描画時の構成:
 ### Step 1: 既存データの読み込み
 
 - `doc/hypothesis-validation/hypothesis-canvas.yaml` — 現在のキャンバス
-- `doc/hypothesis-validation/personas.yaml` — ペルソナ構成
+- `.claude/personas/persona-*.yaml` — 現在利用可能なペルソナ群
 
 ### Step 2: 検証対象の仮説を議論
 
