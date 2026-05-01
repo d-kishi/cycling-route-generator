@@ -1,0 +1,195 @@
+id: persona-hobby
+name: 中級ホビーロードサイクリスト
+description: ロード歴3年以上、月500km前後を走る愛好家層。機材投資・メンテナンスにも一定の予算をかけ、Stravaでログを取りつつ目的地アイデアの枯渇に直面している(=PO本人を含む基準層)
+attributes:
+  age_range: "20代後半-40代"
+  experience_level: "ロード歴3年以上(レース志向ではない、純粋に走行を楽しむ層)"
+  typical_scenario: "土日に都内発80-120km、平坦+軽い登り、単独または少人数(2-3名)"
+  monthly_distance: "500km/月前後"
+  motivation:
+    - "走り続ける楽しさを保つ"
+    - "新しい景色・グルメ・目的地"
+    - "適度な達成感"
+    - "新しいパーツ・機材を試す楽しみ"
+  bike_type: "ロードバイク(完成車価格40-80万円程度、機材アップデートで累計100万円超もあり)"
+  annual_maintenance_cost: "30万円/年(消耗品交換+パーツアップグレード+ウェア・小物)"
+  maintenance_practice: "日常的メンテ(空気入れ・洗車・チェーン注油・ブレーキパッド交換等)は自分で実施。ケーブル交換・ホイール組み等の深いメンテはショップ依頼と自分で実施を併用(知識・経験あり)。特定ショップとの継続関係を持ち、機材相談・パーツ購入の場として活用"
+  navigation_tool: "Strava中心、RideWithGPS/Komoot/Googleマップ併用"
+  cycling_culture: "Strava/SNS文化に親和的、仲間ライドと単独ライドを両立、機材沼への親和性あり"
+  past_destinations: "江の島、三笠公園、高尾山口駅など首都圏の定番折り返し地点"
+checklist:
+  - category: "走り続けることのマンネリ感と原因"
+    rationale: "P-VAL(課題仮説)の妥当性検証、root(マンネリ・目的地枯渇)の裏付け"
+    queries:
+      - "ロードバイク マンネリ 飽きた"
+      - "サイクリング ルート 同じ 飽きる"
+      - "ロードバイク モチベーション維持"
+  - category: "新規ルート開拓の実践と限界"
+    rationale: "現状のルート探索手段と、なぜ目的地アイデアが枯渇するかを明らかにする"
+    queries:
+      - "ロードバイク ルート 新規開拓"
+      - "Strava セグメント 開拓"
+      - "サイクリング 目的地 ネタ切れ"
+  - category: "中級ライダーが既存ツールに感じる不満"
+    rationale: "既存代替手段(Strava/RideWithGPS/Komoot)への差別化要件抽出"
+    queries:
+      - "Strava ルート作成 不満"
+      - "RideWithGPS 使いにくい"
+      - "Komoot 日本"
+broadlistening_summary:
+  - category: "走り続けることのマンネリ感と原因"
+    summary: |
+      【離脱の構造的データ】
+      ツール・ド・ニッポン調査(2020年、n=1,483、一般公開済み)によると、
+      自転車離脱者の約8割が「悩みの解決方法に辿り着いていない」状態であり、
+      離脱者の59%が乗り始めから2年以内に離脱している。
+      「天候(52%)」「お金(48%)」「仲間/友達がいない(41%)」が継続障壁。
+
+      【中級層に特有のルート飽和問題】
+      PistonHeads UK(2024年): 「I love exploring but am getting to a point where there's
+      not much I haven't explored locally」(Correvor氏)。
+      BikeForums(2019年): 「the thought of doing the same ride/route takes the joy out of it」
+      「Riding solo I do find doing the same route, sometimes multiple times a week, does get tiresome」
+      (mcours2006氏)。ソロライド+固定ルートがマンネリ加速要因。
+
+      【日本語圏ブログ・Q&Aにおける言及】
+      Yahoo!知恵袋・ブログで「マンネリの一番の要因は毎回同じコースを走ること」が散見。
+      個人ブログ(maturikun.com)「サイクリングコースを決めて何キロも走ったがなぜか楽しくない」。
+      ローテク自転車研究所「また走りたいって気持ちが湧いてこない」「刺激がないと乗る機会がない」。
+
+      【中級層特有の傾向】
+      Yahoo!知恵袋「ヒルクライムメインで大会に出ていたが40歳超えてタイム更新期待できなくなりマンネリしてきた」。
+      初心者期間が過ぎた中級層にルート飽和問題が集中。
+    sources:
+      - url: "https://www.tour-de-nippon.jp/series/topics/4912/"
+        type: primary
+        note: "ツール・ド・ニッポン公式調査(2020年、n=1,483)。一般公開ページ確認済み。離脱者の59%が2年以内離脱"
+      - url: "https://www.pistonheads.com/gassing/topic.asp?h=0&f=174&t=2112354"
+        type: community
+        note: "PistonHeads UK(2024年)「Have you ever just lost interest in cycling?」スレッド。地元ルート使い尽くし飽和感"
+      - url: "https://www.bikeforums.net/road-cycling/1183173-what-do-when-bored-your-bike-routes.html"
+        type: community
+        note: "BikeForums road-cycling(2019年)。同ルート反復で喜び喪失の直接発話複数"
+      - url: "https://english-bike.com/archives/9226858.html"
+        type: blog
+        note: "ローテク自転車研究所ブログ(日本語)。モチベーション低下の心理メカニズム分析"
+      - url: "https://www.maturikun.com/entry/rodobaikunoranai"
+        type: blog
+        note: "個人ブログ(日本語)。距離走行への飽きの一次体験談"
+      - url: "https://synapse20190908.hatenablog.com/entry/20241014"
+        type: blog
+        note: "個人ブログ(2024年10月)。Stravaと継続モチベーションの関係を論じる"
+      - url: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13283118763"
+        type: community
+        note: "Yahoo!知恵袋「3年で8割やめる」Q&A。継続困難の構造的背景が複数回答者から"
+    self_assessment:
+      coverage: high
+      confidence: medium
+      notes: "ツール・ド・ニッポン公式調査でprimary確保。日本語圏SNS直接発話は技術制約で取得困難、英語圏communityで代替"
+  - category: "新規ルート開拓の実践と限界"
+    summary: |
+      【ルートラボ終了とStrava有料化によるツール難民化】
+      2020年ルートラボ終了→Strava有料化(月800円→2023年10月から1,090円、年7,800円)で
+      ツール難民化が再発。「ルートラボが終わり、Strava有料化でまた模索中」(haniwa.muragon.com)。
+
+      【ルート自動作成への需要と現実】
+      Yahoo!知恵袋(2024年)「ロードバイクのルートを自動で作成してくれるアプリやサイトってありますか?」
+      の質問に対し、回答「満足するような物はまだ無いと思う」。
+      NAVITIMEは「割りとまともなルートを作る」が月額課金制。
+
+      【コース決めの手間】
+      roadbike-navi.xyz: 読者から「どこに行けばいいのかわからない」相談あり。
+      sbaa-bicycle.com: 「数多あるウェブサイトを巡ってコースを探すのも大変」。
+
+      【既存ツールの具体的限界】
+      - Strava ルートビルダー: 山奥エリアでルーティング精度低下(euvicc 比較検証 2019年)
+      - RideWithGPS: 幹線道路を避けすぎ「住宅街をクネクネ迂回する面倒なルート」生成傾向。
+        国際的にも「ルート編集ツールがfiddly at times」(cyclinglabs.net)
+      - Komoot: 「最短距離にこだわりすぎて右左折が死ぬほど入る」「ナビならスマホでググった方が便利」
+        (App Storeレビュー 2025年11月、★2)
+      - Garmin Connect: 「自動コースは適当に生成、長いルートには不向き」(grooveinlife.com)
+
+      【ルート作成時間コスト】
+      主要ツールはすべて手動ウェイポイント or オートルーティング+手動修正形式。
+      満足ルート完成まで相当な手間。Stravaルートビルダー有料化で「ルート目的なら RideWithGPS の方が優秀」
+      (cbnanashi.net 2020年)。
+    sources:
+      - url: "https://haniwa.muragon.com/entry/762.html"
+        type: blog
+        note: "ルートラボ終了→Strava有料化→ツール難民化の一次体験"
+      - url: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11289535631"
+        type: community
+        note: "Yahoo!知恵袋(2024年)。ルート自動作成への需要、「満足するものはまだない」"
+      - url: "https://roadbike-navi.xyz/archives/6870/"
+        type: blog
+        note: "roadbike-navi.xyz。読者「どこに行けばいいかわからない」相談"
+      - url: "https://blog.cbnanashi.net/2020/05/14316"
+        type: community
+        note: "CBN Blog(2020年)。「RideWithGPSの方が優秀」の声集約"
+      - url: "https://euvicc.hatenablog.com/entry/20190910/1568100097"
+        type: blog
+        note: "個人ブログ(2019年)。ツール実走比較、RideWithGPSの「クネクネ迂回」問題"
+      - url: "https://apps.apple.com/jp/app/komoot/id447374873"
+        type: community
+        note: "App Store Komootレビュー(2025年11月、★2)。具体的不満発話"
+      - url: "https://cyclinglabs.net/cycling-apps-compared-komoot-vs-strava-vs-ridewithgps"
+        type: primary
+        note: "Cycling Labs専門メディア比較記事(英語)"
+    self_assessment:
+      coverage: high
+      confidence: high
+      notes: "引用発話の出典URL紐付け or 平叙文化済み。App Store・Yahoo知恵袋でcommunity声追加"
+  - category: "中級ライダーが既存ツールに感じる不満"
+    summary: |
+      【Strava: 価格と機能の不釣り合い】
+      2020年有料化、2023年10月値上げ(年7,800円)で「セグメント争いに参加しない中級層」のコスパ低下。
+      - 「年7,800円3年で約23,400円。Zwift環境改善に充てた方が良い」(chari100.com 2024年)
+      - 「Strava有料機能の大半が Coros アプリで無料、維持する意味がない」(tomo.run 2023年)
+      - 「6,300円/年に値上がり。元から使ってない機能が増えても高い」(road-bike.net)
+
+      Strava有料会員比率は登録ユーザー全体の約2%(Sacra/businessofapps.com 2024-2025年)。
+      解約率の公的数値はStrava非公開、IR/決算報告からも特定不可。
+
+      【RideWithGPS: ルート編集の複雑さ】
+      Cycling Labs(2024年): 「powerful but can feel fiddly at times」。
+      日本語化済みだがスマホアプリでのルート作成・保存は有料会員限定、無料ユーザーはPC利用のみ。
+
+      【Komoot: 日本道路環境との不適合】
+      App Store日本語レビュー(2025年11月、★2): 「右左折が死ぬほど入る」「何度も細かい指示で道を間違える」
+      「訳の分からない遠回り」。欧州中心コミュニティデータ依存→日本道路環境との不適合。
+
+      【ツール間共通: ルート自動生成品質】
+      Strava・RideWithGPS・フットパスの実走比較(euvicc 2019年): いずれも日本ローカル道路網に課題。
+      Strava=ログ豊富エリアで強いが山間部精度低下、RideWithGPS=幹線回避過剰、フットパス=登山道誤ルーティング。
+
+      【中級層固有の痛点】
+      コンペ志向のない中級ホビーには本格分析機能(パワーゾーン、FTP、疲労度)は過剰。
+      「ルート発見・計画立案」特化のシンプルツールが求められる。
+    sources:
+      - url: "https://chari100.com/unsubscribe-strava/"
+        type: blog
+        note: "(2024年)。機能余剰による価値不一致観点"
+      - url: "https://tomo.run/strava-getting-started"
+        type: blog
+        note: "(2023年)。ツール競争による陳腐化観点"
+      - url: "https://road-bike.net/archives/30219"
+        type: blog
+        note: "価格変動の具体的影響観点"
+      - url: "https://www.businessofapps.com/data/strava-statistics/"
+        type: primary
+        note: "Business of Apps(2024-2025年)。Strava有料会員比率約2%、解約率は非公開と確認"
+      - url: "https://apps.apple.com/jp/app/komoot/id447374873"
+        type: community
+        note: "Komootナビ品質への日本語ユーザー不満(★2レビュー)"
+      - url: "https://cyclinglabs.net/cycling-apps-compared-komoot-vs-strava-vs-ridewithgps"
+        type: primary
+        note: "ツール比較専門メディア(英語)"
+      - url: "https://euvicc.hatenablog.com/entry/20190910/1568100097"
+        type: blog
+        note: "ルート品質問題の根本=ツール側の設計課題"
+    self_assessment:
+      coverage: high
+      confidence: medium
+      notes: "情報源重複解消(各ソースをカテゴリ3固有観点で引用)。businessofapps.com primary追加で差別化。Strava解約率は非公開と確認、有料会員比率2%を間接指標として代替"
+created_at: 2026-05-01
+last_updated: 2026-05-01

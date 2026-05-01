@@ -1,0 +1,196 @@
+id: persona-casual
+name: カジュアルスポーツバイク乗り
+description: クロスバイク・ミニベロ・ツーリングバイク等を所有するライト層。普段使いと休日のポタリングが混在し、ロード文化(Strava・機材沼・レース)とは距離を置く。自転車を「他の趣味の手段」として位置づけ、観光・グルメ・旅行先のレンタサイクル散策も同じ関心圏にある
+attributes:
+  age_range: "20代-60代以上(年齢層問わず)"
+  experience_level: "スポーツバイク歴は短〜長混在、ただしレース・ブルベ志向ではない。日常移動と休日サイクリングのハイブリッド"
+  typical_scenario: "平日の通勤・買い物+休日に20-50km、街中・川沿い・近郊観光地。車道だけでなくサイクリングロード・歩道(可の場所)も活用。輪行よりも自宅発が中心"
+  monthly_distance: "50-150km/月(普段使い+休日サイクリング、純粋なスポーツ走行は月50km以下のことも)"
+  motivation:
+    - "移動・買い物の手段+気分転換"
+    - "健康維持・運動不足解消"
+    - "観光・寺社巡り・歴史探訪"
+    - "カフェ・グルメ・スイーツ巡り"
+    - "近郊の観光地探訪・旅行先のレンタサイクル散策"
+  parallel_hobbies:
+    - "観光・地理探索系: 寺社巡り、城・史跡、道の駅、聖地巡礼、御朱印、スタンプラリー、廃線跡巡り"
+    - "グルメ・体験系: カフェ巡り、スイーツ巡り、酒蔵巡り、道の駅グルメ"
+    - "旅行・移動系: ドライブ+レンタサイクル、輪行旅(気軽版)、温泉旅行+周辺散策"
+  bike_type: "クロスバイク・ミニベロ・ツーリングバイク等(ドロップハンドル機ではないことが多い)。完成車価格5-15万円程度"
+  annual_maintenance_cost: "1-3万円/年(消耗品+ライト・カゴ・スタンド等の実用パーツ中心)"
+  maintenance_practice: "自分でやるのは空気入れ程度。それ以外のメンテナンス・整備は故障するまで無関心で、故障したら自転車ショップ(チェーン店含む)に持ち込む。専門ショップとの継続関係は持たない"
+  navigation_tool: "Googleマップ自転車モードのみ(Stravaは未導入 or アカウントだけ持っている程度)"
+  cycling_culture: "ロード文化(Strava・機材沼・レース・KOM/QOM)とは距離を置く。SNSは個人のInstagram投稿程度、ライド仲間より家族・友人と一緒"
+  past_destinations: "街中、川沿いカフェ、近郊観光地(鎌倉・横浜・川越等)、ご当地グルメスポット、旅行先のレンタサイクルでの散策"
+checklist:
+  - category: "カジュアル層の自転車利用実態と動機"
+    rationale: "ロード志向ではない層が「なぜ・どう」自転車に乗っているかを把握。普段使い・休日サイクリング・観光・グルメの混在実態と、自転車を「他の趣味と並列」に位置づける視点を抽出"
+    queries:
+      - "クロスバイク 街乗り 楽しみ方"
+      - "ミニベロ ポタリング コース"
+      - "サイクリング グルメ おすすめ"
+  - category: "情報源とルート選びの実態"
+    rationale: "Stravaやサイクリング専門アプリを使わない層が、どこからルート情報を得ているかを把握(Googleマップ依存・SNS・ガイド本・テレビ等)。ロード志向ツールと無縁の情報源生態系を抽出"
+    queries:
+      - "Googleマップ 自転車 サイクリング"
+      - "サイクリングコース ガイド本"
+      - "週末 自転車 おすすめスポット"
+  - category: "他の趣味との接続性と本サービスの拡張可能性"
+    rationale: "サイクリングを単独の趣味としてではなく、観光・寺社巡り・カフェ巡り・ドライブ+レンタサイクル散策等の延長として見る視点。ロード志向にはない「手段としての自転車」の関心軸を抽出することで、本サービスの利用文脈を広げる(例: 旅行先のレンタサイクルでルート提案を使うシナリオ、テーマ起点ルートの可能性)"
+    queries:
+      - "旅行先 レンタサイクル 楽しみ方"
+      - "ドライブ 自転車 観光 組み合わせ"
+      - "聖地巡礼 サイクリング"
+      - "御朱印 サイクリング"
+      - "カフェ巡り 自転車"
+broadlistening_summary:
+  - category: "カジュアル層の自転車利用実態と動機"
+    summary: |
+      【利用実態】
+      ポタリング=「距離も速度も気にせず、がんばりすぎず散歩するように」(Daytona Mobility)。
+      20km程度の中距離走行、「50〜60km週末サイクリング」上限。
+      ロードショップが「クロスバイク買ってすぐ後悔」とロードへ移行を勧めるが、
+      「別に頑張って速く走らなくても」という意識でクロスバイク十分(知恵袋ベストアンサー)。
+
+      【動機の構造】
+      (a)グルメ・カフェ巡り: 「SNS映えするスイーツ」「電車・バスで行きにくい店」
+      (b)健康・運動不足解消: 「片道10km通勤で1ヶ月5kg減量」
+      (c)観光・地理探索: 「御朱印集めや季節の花巡り」
+      (d)テーマ設定型: 「お花見ライド」「グルメライド」(Toy Bike等)
+
+      【非ロード文化との明確な分離】
+      「ロードは速く走る競技目的」「速く走らなくていい人にはクロスバイク」(知恵袋)。
+      「おしゃれと快適さ両立した服装」が推奨、専門サイクルウェア不要(Daytona)。
+      登山・ハイキング愛好者がクロス選択するケースも多い。
+
+      【年齢・性別】
+      「女性に人気」「おしゃれに敏感の方にも人気」「運動経験問わず参入可能」設計。
+    sources:
+      - url: "https://mobility.daytona.co.jp/contents/magazine/pottering/what-is-pottering/"
+        type: primary
+        note: "Daytona Mobility公式ポタリングマガジン、ポタリング体系的解説"
+      - url: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13295557828"
+        type: community
+        note: "Yahoo知恵袋: クロスバイクvs用途議論、カジュアル本音"
+      - url: "https://cyclehack.jp/69"
+        type: blog
+        note: "CYCLE HACK: ポタリング特集、グルメ・観光例豊富"
+      - url: "https://toy-bike.jp/blog/1738/"
+        type: primary
+        note: "Toy Bike(ミニベロ専門店): テーマ設定型ポタリング提案"
+      - url: "https://www.bike-plus.com/about/customer-voice/okadasama-7007.html"
+        type: community
+        note: "バイクプラス顧客の声: ロード移行境界例"
+    self_assessment:
+      coverage: high
+      confidence: high
+      notes: "ロード志向との明確な差別化、健康・グルメ・観光3動機軸十分。SNS直接投稿はやや弱い"
+  - category: "情報源とルート選びの実態"
+    summary: |
+      【Googleマップ依存の実態】
+      2020年9月国内10都道府県(北海道・東京・神奈川・千葉・埼玉・大阪・兵庫・静岡・愛知・福岡)で自転車ルート対応(Google公式)。
+      ポジティブ: 「高速道路自動回避」「クルマルートではなく自転車適切道」「登り坂回避」(じてまに研究所)。
+      ネガティブ(知恵袋実声):
+      - 「よくわからない回り道指示」(大通り回避→農道・村道)
+      - 「自転車ルートはまだ条件ダメダメ」
+      - 「時間表示が早すぎる」(1.5倍かかることも)
+      - 「使える県が限定」(10都道府県外で機能しない)
+      代替: 「車のルートで有料道路使わない設定」が快適という声。
+
+      【専門アプリはほぼ使わない実態】
+      Strava/自転車NAVITIMEはカジュアル層では認知低い。
+      知恵袋「NAVITIMEは無料だとルート検索のみで案内は有料」「Ride with GPSはGarmin転送向け」上級者向け説明。
+      「多くのアプリが採算性で撤退、完璧なソリューション限定的」。
+
+      【代替情報源パターン】
+      Yahoo!マップ(自転車ナビ無料)、TABIRIN(観光協会系)、自転車NAVITIME。
+      ガイド本: Bicycle Club、じゃらん・ぐるたびのサイクリングコースランキング。
+      観光協会・自治体: しまなみ海道公式、各地サイクリングタウン。
+      「PCの方がルート作成やりやすく、危ない箇所はストリートビューで確認」(知恵袋)。
+
+      【情報収集の受動性】
+      「自分で探す」より「テレビ・雑誌で見た観光地に行く」「友人に教えてもらう」受動的取得が多いと推測。
+    sources:
+      - url: "https://blog.google/intl/ja-jp/products/explore-get-answers/2020_09_japan-biking-directions/"
+        type: primary
+        note: "Google公式ブログ: 国内10都道府県自転車ルート対応(2020年9月)"
+      - url: "https://jitemani.com/googlemap-bicycle-route-mode/"
+        type: blog
+        note: "じてまに研究所: Googleマップ自転車モード詳細検証"
+      - url: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q10262445820"
+        type: community
+        note: "Yahoo知恵袋: Googleマップ回り道不満の声"
+      - url: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13306558813"
+        type: community
+        note: "Yahoo知恵袋: 自転車ルート検索アプリ比較"
+      - url: "https://tabi-rin.com/archives/course"
+        type: primary
+        note: "TABIRIN(観光庁系サイクルツーリズム): ルートDB、観光客向け"
+      - url: "https://chiririn.cb-asahi.co.jp/portal/cycling_course/list.html"
+        type: primary
+        note: "ちりりん(サイクルベースあさひ公式): コース一覧、初心者・観光向け"
+    self_assessment:
+      coverage: high
+      confidence: high
+      notes: "Googleマップ依存の実態と不満点、専門アプリ非使用が裏付けられた。受動的情報取得は状況証拠的推測"
+  - category: "他の趣味との接続性と本サービスの拡張可能性"
+    summary: |
+      【旅行先レンタサイクルの実態・規模】
+      しまなみ海道(愛媛・広島): 2025年度自転車貸出7万9502件/17万3279台で過去最多、インバウンド70%増(TraveVoice 2026年4月)。
+      利用動機「ドライブで見えない・散策でたどり着けない魅力に出会いたい」「人混み回避・自由度高い」(tripnote, TABIRIN)。
+      例: 河口湖周辺「バス・車で気づかなかった路地・カフェ発見」、松山・道後エリア。
+      TABIRIN「車で移動するほどではないが徒歩では遠い」中間距離需要明示。
+
+      【御朱印×サイクリング】
+      関東十社「ツール・ド・御朱印」: ジャージポケットサイズ御朱印帳、10社制覇満願印授与(bike-plus.com)。
+      千葉県流山市「七福神めぐり御朱印サイクリング」約25km(クロスバイク向け距離感)。
+      つくば霞ヶ浦りんりんロード「ツール・ド・御朱印」公式企画。
+      HELLO CYCLINGで東京神社巡り1day(ソフトバンクニュース)。
+      全国81,000社神社・77,000寺院のポテンシャル背景。
+
+      【カフェ巡り×自転車】
+      典型「1時間走→午前コーヒー→30分走→ランチ」(wimo.co.jp)。
+      実践障壁「行きたいカフェの駐輪可否確認」「電車・バスで行きにくい店への到達手段」。
+      しまなみ海道カフェ巡礼コースも存在。
+
+      【聖地巡礼×サイクリング】
+      アニメ「ろんぐらいだぁす!」聖地: 境川CR(24.5km、フラット)・三浦半島海沿い60km。
+      「ヤマノススメ」聖地2ヶ所自転車巡り(note 2024年)。
+      SNS親和性高く「同じ趣味の仲間とコミュニティ参加で楽しさ倍増」。
+
+      【ドライブ+自転車の組み合わせ】
+      「自転車でしか気づかない路地・カフェ発見」体験が口コミで語られる。
+      BE-PAL等アウトドアメディアでもポタリング特集、アウトドア趣味との接続。
+
+      【本サービスへの示唆】
+      「御朱印巡りルート」「カフェ巡りルート」テーマ起点ニーズ実在、複数事業者がコンテンツ化。
+      旅行先レンタサイクル利用者「何もわからない状態で現地に来る」ケース多く、スポット起点ルート提案需要高い。
+      距離感「短距離〜中距離(10〜30km)」が観光カジュアル層に最適。
+    sources:
+      - url: "https://www.travelvoice.jp/20260430-159655"
+        type: primary
+        note: "TraveVoice: しまなみジャパン2025年度過去最多、インバウンド70%増(2026年4月)"
+      - url: "https://tabi-rin.com/archives/article/41748"
+        type: primary
+        note: "TABIRIN公式: レンタサイクル選び方、中間距離需要明示"
+      - url: "https://www.softbank.jp/sbnews/entry/20180711_01"
+        type: primary
+        note: "ソフトバンクニュース: HELLO CYCLING×東京神社巡り、御朱印×シェアサイクル親和性"
+      - url: "https://note.com/citose_ark/n/ne1144ac46630"
+        type: community
+        note: "note: 「ヤマノススメ」聖地2ヶ所自転車巡り体験談(2024年)"
+      - url: "https://nishiki-cycling.com/gosyuin-nagareyamashichifukujin/"
+        type: blog
+        note: "初心者にしきのサイクリングBLOG: 流山七福神御朱印ライド25km"
+      - url: "https://www.ringringroad.com/news/3742/"
+        type: primary
+        note: "つくば霞ヶ浦りんりんロード公式: ツール・ド・御朱印イベント"
+      - url: "https://www.wimo.co.jp/blog/bicycle-cafe-love"
+        type: blog
+        note: "wimo(自転車専門店): カフェ巡り×自転車実践方法"
+    self_assessment:
+      coverage: high
+      confidence: high
+      notes: "テーマ起点ルート(御朱印・カフェ・聖地巡礼)実在事例、しまなみ統計一次情報。Drive+レンタサイクル定量データ薄い"
+created_at: 2026-05-01
+last_updated: 2026-05-01

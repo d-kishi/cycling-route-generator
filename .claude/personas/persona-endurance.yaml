@@ -1,0 +1,265 @@
+id: persona-endurance
+name: ロングライド/ブルベライダー
+description: ロード歴5年以上、月800-1500km走るロングライド志向の中年層中心。BRMブルベ完走経験者を中心に、佐渡ロングライド・グランフォンド・Ride Across Japan・自主企画ロングを楽しむ層。レース志向ではなく「走り切る」達成感が動機で、補給・睡眠・夜間走行を含めた行程設計が日常
+attributes:
+  age_range: "30代-60代以上"
+  experience_level: "ロード歴5年以上、ブルベ200-1000km完走経験(SR(Super Randonneur)取得経験者を含む)、佐渡ロングライド・グランフォンド・Ride Across Japan等の長距離イベント参加経験多数"
+  typical_scenario: "月1-2回の200km以上ロングライド、平日インドア+週末ロング。夜間走行・雨天走行・寒冷下走行を厭わない"
+  monthly_distance: "800-1500km/月"
+  motivation:
+    - "認定ブルベの完走(BRM 200/300/400/600/1000/1200km)"
+    - "SR(Super Randonneur)取得・PBP/LEL等の海外ブルベ参加"
+    - "Ride Across Japan等の超ロング自主イベントへの参加"
+    - "未踏のロングルート開拓"
+    - "ペースを刻んで走り切る達成感、自己との対話"
+  bike_type: "エンデュランスロード/ツーリングバイク/ランドナー(レース機材ではなくロング快適性重視)、完成車30-80万円。上級者ほどライド中の自力トラブル対応性を優先し、機械式コンポーネント・チューブドタイヤ(クリンチャー)を選ぶ傾向。電動コンポ(Di2/eTap)・チューブレスは整備性・出先対応の難しさから敬遠する層が一定数存在。フェンダー・ライト・荷台等の長距離装備搭載"
+  wheel_investment: "ロングライド快適性重視(乗り心地優先のタイヤ・リム、軽量より耐久性・耐パンク・耐久ベアリング)。ハンドメイド手組ホイールやハブダイナモ装着リムを選ぶ層もいる"
+  annual_maintenance_cost: "20-40万円/年(消耗品+ブルベ参加費+宿泊費+補給・装備類+海外ブルベ遠征費)"
+  maintenance_practice: "自分でメンテができる(ブルベ中の自己メカニックが必須スキル)。それ以上に、特定ショップでの定期点検を欠かさない傾向が強い(ロングライド前のフレーム・ホイール・コンポ全体チェック、ブルベ前の事前整備が必須)。出先での自力修理が前提の文化"
+  supply_planning_practice: "補給(休憩)地点の事前計画が完走の最重要要素。コンビニ間隔・自販機分布・道の駅営業時間・PC(チェックポイント)位置・エスケープ地点・宿泊先(BR)を事前にすべてマッピング。ハンガーノック・水分切れを避ける計画性がDNF回避の鍵"
+  navigation_tool: "Garmin Edge(800/1040系) + RideWithGPS有料(ルート設計+キューシート出力重視)、Strava併用、ブルベ用キューシート(PC情報付き)"
+  cycling_culture: "日本ランドヌールズ(audaxjapan.org)・各地区ブルベ事務局コミュニティに参加、SR取得者は英雄視される"
+  past_destinations: "BRM(各地ブルベ200/300/400/600km)、佐渡ロングライド、グランフォンド糸魚川、Ride Across Japan、PBP・LEL海外大会"
+checklist:
+  - category: "ブルベ・ロングライド志向特有の悩み・挫折要因"
+    rationale: "完走できないDNF原因(睡魔・寒さ・機材トラブル・体力枯渇)、家族の理解、PBP/LEL費用調達等、ロング志向特有の課題を抽出。serious(レース志向)とは異なる"
+    queries:
+      - "ブルベ DNF 理由"
+      - "ロングライド 200km 完走できない"
+      - "ブルベ 家族 理解"
+  - category: "補給・休憩計画とロングライド向けルート設計"
+    rationale: "ロングライド成功の最重要要素は「どこで補給(休憩)するか」の計画性。コンビニ間隔・道の駅営業時間・自販機分布の把握、宿泊地点、夜間照明区間、エスケープルート、PC(チェックポイント)、雨天時迂回など、24時間以上のライド前提の特殊要件を抽出"
+    queries:
+      - "ブルベ 補給 計画"
+      - "ロングライド ハンガーノック 対策"
+      - "ブルベ 道の駅 営業時間"
+      - "ブルベ 宿泊 計画"
+      - "ブルベ 夜間 装備 照明"
+  - category: "ロングライド志向が既存ツールに感じる限界"
+    rationale: "キューシート連携、バッテリー寿命、オフライン地図、補給ポイント情報の事前マッピング機能等、ロング向けツールへの不満。RideWithGPS・Garmin Edge への要件は他ペルソナと異なる"
+    queries:
+      - "Garmin Edge バッテリー ブルベ"
+      - "RideWithGPS キューシート 連携"
+      - "ブルベ GPS ナビ オフライン"
+broadlistening_summary:
+  - category: "ブルベ・ロングライド志向特有の悩み・挫折要因"
+    summary: |
+      【公式ルール・認定要件に起因する挫折】
+      Audax Japan公式「BRMは無サポート・回収車なし・自己責任」が大原則。
+      参加条件「20歳以上で長距離ツーリング経験を持ち自己完結できるサイクリスト+賠償付き保険加入」。
+      失格・挫折要因: PC(コントロールポイント)不通過は即失格、キューシートを自力読解する能力前提、
+      天候変化・ミスコース・メカトラブル対処を自力で行う必要。
+      制限時間「平均時速15km相当」だが、200km/13.5h、300km/20h、400km/27h、600km/40h と長い。
+
+      【SR取得・PBPへの道のりの高さ】
+      SR(Super Randonneur)は同一暦年内(1月〜12月)に200/300/400/600km全完走必須。
+      AJ公式: PBP参加資格はSR取得が前提。
+      PBP 2023(pbpresults.com / cyclecharts.uk): 全66カ国から6,430名出走、
+      DNF 80%以上が2日目終了までに発生、フィンランドが完走率首位(気候・経験値の個人差)。
+
+      【DNFの主因】
+      - 睡魔・睡眠不足: 600km(制限40時間)で「マイクロスリープ」レベル、100km地点でも強烈な睡魔。15分仮眠で「かなり復活」
+      - 体温調節失敗(低体温症・熱中症)
+      - 食欲不振・ハンガーノック: 300km以降で嘔気・水しか飲めない事例。PBP2023消費18,500kcal vs 摂取9,500kcal
+      - 機材トラブル: グロス速度14km/h以下(制限15km/h)はギリギリ、機材故障重なるとDNF
+      - 脚・お尻の痛み: 「膝内側刺すような痛み」「お尻皮膚炎症」
+      - メンタル: 「他参加者に置いていかれた」「降雨でモチベーション低下」
+
+      【PBP・海外ブルベ費用負担】
+      PBP2023参加総額529,786円(実例)。ANA往復298,620円(2019比+19万)、宿泊58,543円、参加費31,350円。
+      装備費(ヘッドライト・テールライト・サドルバッグ)初期投資大。
+
+      【家族・生活への影響】
+      600km=1泊2日、1000km=制限75時間(約3泊4日)拘束。
+      「リッターバイク2台売っちゃった」「趣味娯楽は全部ヤフオク行き」極端な入れ込み報告。
+      年末年始含む全シーズン開催で家族行事と競合。
+    sources:
+      - url: "https://www.audax-japan.org/brm/brm-entry/"
+        type: primary
+        note: "Audax Japan公式 BRM参加条件・認定ガイドライン。自己完結要件・PC不通過失格明記"
+      - url: "https://www.audax-japan.org/brevet/brevet/"
+        type: primary
+        note: "Audax Japan公式 距離別制限時間一覧(200km/13.5h〜600km/40h)、SR認定条件"
+      - url: "https://www.audax-japan.org/brevet/about_brevet/"
+        type: primary
+        note: "Audax Japan公式 ブルベ概要。無サポート・自己責任原則"
+      - url: "https://www.audax-japan.org/award/about/"
+        type: primary
+        note: "Audax Japan公式 表彰制度。SR/SPR/R5000等の長期目標設定根拠"
+      - url: "https://www.pbpresults.com/2023"
+        type: primary
+        note: "PBP 2023公式結果DB。6,430名出走、DNFの80%以上が2日目終了時点"
+      - url: "https://www.cyclecharts.uk/pbp-2023"
+        type: primary
+        note: "PBP 2023統計分析サイト。66カ国参加、フィンランド完走率首位等の国別データ"
+      - url: "https://potaride.com/dnf-reasons/"
+        type: blog
+        note: "ブルベDNF10場面分類、240km地点DNF体験"
+      - url: "https://www.longride.org/brevet-nap-sleep/"
+        type: blog
+        note: "ブルベ仮眠戦略、400/600/1000km別推奨睡眠時間"
+      - url: "https://cannonball24.com/pbp-2023-total-cost/"
+        type: blog
+        note: "PBP2023費用詳細529,786円、実領収書ベース"
+      - url: "https://note.com/anna241e/n/n97c79c733e7a"
+        type: community
+        note: "PBP2023参加者note、消費18,500vs摂取9,500kcal失敗詳細"
+      - url: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14160017419"
+        type: community
+        note: "Yahoo知恵袋、600km後半嘔気・食欲不振への実回答"
+    self_assessment:
+      coverage: high
+      confidence: high
+      notes: "Audax Japan公式4件・PBP統計2件でprimary 6件(55%)を確保。DNF原因・費用・生活影響の3観点とも具体的数値・エピソード揃い"
+  - category: "補給・休憩計画とロングライド向けルート設計"
+    summary: |
+      【スポーツ栄養学的推奨】
+      日本スポーツ栄養学会(JSNA)研究誌2020: 持久性パフォーマンス向上には
+      「運動1〜4時間前に体重1kgあたり1〜4gの炭水化物」摂取推奨。
+      長時間運動(90分以上)では1時間あたり30〜60g炭水化物補給が国際スタンダード。
+      SBAA公式ガイド「1〜1.5時間ごとに何か1つ摂取」「空腹を感じる前に補給」具体目安。
+
+      【道の駅の補給ポイント活用と制約】
+      国交省「道の駅登録・案内要綱」: トイレ・駐車場は24時間無料開放が登録要件。
+      ただし「地域振興施設(飲食・物販)」は24時間営業義務なし。
+      これがブルベ夜間走行での補給困難の根本原因。
+      山間部の道の駅では物販・飲食が夕方〜夜間閉店、自販機のみが頼り。
+      全国1,231駅(2025年12月時点)登録。
+
+      【RideWithGPSキューシート機能仕様】
+      公式ヘルプセンター(support.ridewithgps.com):
+      - キューシート自動生成(ターン検知)+手動カスタマイズ可能
+      - カスタムキューNotes フィールドは音声ナビ読み上げ
+      - PDFキューシートへのズームイン地図埋込み可能
+      - Cue Review Tool(交差点ごと確認ワークフロー)はPremium限定
+      - FIT/TCXエクスポート時のみコースポイントとしてGarmin転送可(GPX不可)の互換性制約
+
+      【補給計画の戦略性】
+      「コンビニ空白地帯では個人商店もマーク」事前マッピング。
+      手順: RWGPSコース読込→25kmごとコンビニマーク→PCからの距離計算してマーキング。
+      「50〜70kmノンストップでコンビニつなぎ走行」標準パターン。
+      補給間隔: 最低30km(1時間)に1度食、20分に1回ボトル。
+      走行中: グミ・ラムネ・ミニ羊羹・チョコバーをステムポーチで摂取。
+
+      【ハンガーノック対策】
+      1時間おき250kcal摂取推奨。300km以降嘔気対策「1回量少なく回数多め」。
+      ゼリー・ジェル・バナナ・岩塩・パン等選択肢の多さが後半補給継続。
+      粉飴(マルトデキストリン)は血糖値急変動を避ける。
+
+      【宿泊・仮眠計画】
+      - 400km: コンビニ前20分〜1時間仮眠(無料) or ネットカフェ(1,000-3,500円)
+      - 600km: ビジネスホテル(7,500-10,000円)6時間滞在(風呂・食事1時間+睡眠4-5時間)
+      - 1000km以上: 最低3時間睡眠が「回復」基準
+      PCクローズ時間の事前確認必須。
+
+      【夜間走行装備計画】
+      ブルベ規定でフロント2灯以上義務。
+      「そこそこ明るく長く使える」ランタイム優先、400ルーメン夜の市街地「十分」。
+      ハブダイナモ「走行中絶えず発電する有効手段」上級者人気。
+      日照長い6月でも「最低9時間持続要」。
+    sources:
+      - url: "https://www.jsna.org/cms/wp-content/uploads/2022/12/13-p016-024.pdf"
+        type: primary
+        note: "日本スポーツ栄養学会誌vol.13 2020。持久性パフォーマンスと運動当日栄養摂取、炭水化物1〜4g/kg推奨値"
+      - url: "https://support.ridewithgps.com/hc/en-us/articles/4419011474843-Cuesheets"
+        type: primary
+        note: "RideWithGPS公式ヘルプ キューシート機能仕様。Cue Review ToolはPremium限定"
+      - url: "https://www.mlit.go.jp/road/Michi-no-Eki/index.html"
+        type: primary
+        note: "国交省 道の駅案内公式。全国1,231駅、トイレ24時間開放要件"
+      - url: "https://www.mlit.go.jp/road/Michi-no-Eki/pdf/guidance.pdf"
+        type: primary
+        note: "国交省 道の駅登録・案内要綱。地域振興施設は24時間義務対象外"
+      - url: "https://www.sbaa-bicycle.com/article/4381"
+        type: primary
+        note: "SBAA公式 サイクリング補給食ガイド、1〜1.5時間ごと補給推奨"
+      - url: "https://ikarugasan.hatenablog.com/entry/2021/03/19/124837"
+        type: community
+        note: "コンビニ補給戦略、50-70kmノンストップ、RWGPSマーキング手順"
+      - url: "https://note.com/anna241e/n/n97c79c733e7a"
+        type: community
+        note: "PBP2023補給失敗詳細、洋食適応困難・カロリー不足"
+      - url: "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14160017419"
+        type: community
+        note: "Yahoo知恵袋 補給計画失敗体験談"
+      - url: "https://potaride.com/recommended-napping-places/"
+        type: blog
+        note: "ブルベ仮眠場所比較、距離別コスト・推奨場所"
+      - url: "https://www.longride.org/brevet-nap-sleep/"
+        type: blog
+        note: "400/600/1000km別仮眠戦略、最低3時間睡眠で回復"
+      - url: "https://blog.goo.ne.jp/tepoglen2501/e/8af0c81b34b64fc1cf8abb6e2524eed2"
+        type: blog
+        note: "ブルベライト選び、400km以上経験のルーメン・ランタイム判断"
+    self_assessment:
+      coverage: high
+      confidence: high
+      notes: "JSNA・国交省・RWGPS公式・SBAA等でprimary 5件(45%)。栄養学・法令・公式ツール情報で根拠強化"
+  - category: "ロングライド志向が既存ツールに感じる限界"
+    summary: |
+      【Garmin Edgeのバッテリー問題】
+      Edge 1030: 公称20時間、拡張併用で40-44時間。
+      Edge 1040 Solar: 公称35時間+ソーラー10時間=45時間、600km(制限40時間)外部充電なし可能。
+      ただし「薄曇り山岳ライド4時間でソーラー30分分のみ」実測。
+      Edge 1050: 公称20時間/節約60時間、ソーラーなし。
+      劣化問題: Edge 530の2.5年使用で「購入直後の6割」。
+
+      BikeForumsランドヌール専門フォーラム:
+      - 内蔵充電池では400km以上の走行に対応不能(実走20h前後が限界)
+      - 外部バッテリーパック必須だが純正マウントからの脱落リスク
+      - eTrex系AA電池モデルは電池交換で長距離対応可だが、
+        ルート再計算が敏感すぎて軽微なコース逸脱でも不要な再ルーティング発生
+      - Edge 800系は180マイル(約290km)超での記録不具合報告
+
+      【RideWithGPSキューシート連携問題】
+      実ブルベ参加者の8割がキューシート印刷版を携帯、GPSナビ単独依存は非現実的。
+      キューシート限界「ルートによっては右折・左折のキューが存在しない場合」。
+
+      BikeForumsキューシートスレッド:
+      - コントロールポイントを交差点に配置するとキューシート情報が欠落、ボーナスマイル原因
+      - 方向案内がT字路以外で不正確、50マイルのライドで5回以上アプリで確認が必要
+      - 基盤地図データ(Google Maps)の質がキューシート精度のボトルネック
+
+      【キューシート vs GPSの二重管理問題】
+      BikeForumsキューシートスレッド(実ランドヌール多数参加):
+      - 「雨でキューシートが劣化し15km迷った」直接体験談
+      - 大多数が「紙キューシート+GPSの二重保険」方式採用
+      - 完全GPS移行は少数派、経験者ほど紙との併用を推奨
+      - GPSは現在地リアルタイム表示・コース逸脱検知が優れているが、
+        バッテリー依存と信号なし区間でのナビ精度低下が欠点
+
+      【総合課題】
+      補給地点(コンビニ・道の駅)事前マッピングはGarmin・RWGPS標準機能では不十分。
+      Strava はブルベのチェックポイント管理・認定記録に非対応。
+      複数ツール(Garmin+RWGPS+Googleマップ+紙キューシート)組合せの複雑さが標準運用、一元化への潜在ニーズ高い。
+    sources:
+      - url: "https://www.bikeforums.net/long-distance-competition-ultracycling-randonneuring-endurance-cycling/1098269-best-garmin-model-does-routing-400km-1200km-brevets.html"
+        type: community
+        note: "BikeForumsランドヌール専門フォーラム。400-1200kmブルベ向けGarmin選定議論、バッテリー限界・再ルーティング問題"
+      - url: "https://www.bikeforums.net/long-distance-competition-ultracycling-randonneuring-endurance-cycling/1108083-do-you-still-use-paper-cue-sheets-brevets.html"
+        type: community
+        note: "BikeForumsキューシートスレッド。紙vsGPS実態議論、雨天劣化体験談"
+      - url: "https://cannonball24.com/edge1040-from-a-long-ride-perspective/"
+        type: blog
+        note: "Edge 1040評価、バッテリー劣化・ソーラー実測値・実用懸念"
+      - url: "https://tourdekimamani.com/impression_garmin_extention_pack/"
+        type: blog
+        note: "Garmin拡張バッテリー300kmブルベインプレ、落下事故リスク報告"
+      - url: "https://potaride.com/need-a-cue-sheet/"
+        type: blog
+        note: "RWGPSキューシート機能の解説と限界、参加者8割が紙キューシート持参"
+      - url: "https://milbon24.com/race-notes/"
+        type: blog
+        note: "GarminへのPC・通過チェック表示(RaceNotes)、入力煩雑さ"
+      - url: "https://support.garmin.com/ja-JP/?faq=PbfAF0zB1l3pQoR2Tprsn9"
+        type: primary
+        note: "Garmin日本公式サポート、Edgeデバイスのバッテリー最大化設定"
+      - url: "https://www.garmin.co.jp/products/intosports/edge-1050/"
+        type: primary
+        note: "Garmin日本公式 Edge 1050製品ページ、公称バッテリー時間"
+    self_assessment:
+      coverage: high
+      confidence: medium
+      notes: "BikeForumsランドヌール専門・キューシートスレッドでcommunity 2件追加。Garmin公式系primary維持。RWGPS公式フォーラム不満声・App Storeレビュー直接抽出は技術制約あり"
+created_at: 2026-05-01
+last_updated: 2026-05-01

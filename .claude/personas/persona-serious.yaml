@@ -1,0 +1,191 @@
+id: persona-serious
+name: シリアスロードライダー
+description: ロード歴5年以上、月1000-1500km走るレース志向の競技層。データ駆動でトレーニング設計し、ハイエンド機材+電動コンポを複数所有。ホイール投資にも積極的で、ヒルクライム・クリテリウム・ロードレース等の成績向上を主目標とする
+attributes:
+  age_range: "20代-50代"
+  experience_level: "ロード歴5年以上(学生時代からの競技経験者を含む)、ヒルクライム/クリテリウム/ロードレース等のレース参戦経験豊富"
+  typical_scenario: "土日に150-300kmのレース練習・チーム練習。平日はインドアトレーニング(Zwift)とインターバルメニュー。レース本番に向けたピリオダイゼーション(テーパリング)を意識"
+  monthly_distance: "1000-1500km/月(インドア比率が高い時期もあり)"
+  motivation:
+    - "FTP/PWR(パワーウェイトレシオ)の向上"
+    - "ヒルクライム/クリテリウム/ロードレースでの好成績"
+    - "レースカテゴリの昇格(クラス3→2→1等)"
+    - "走力・データへの自己投資"
+  bike_type: "ハイエンドロード2台以上の所有が前提(レース用エアロロード+ヒルクライム用軽量バイクの使い分けが標準)。完成車価格70-150万円/台、累計150-300万円超。Ultegra Di2/Dura-Ace Di2/SRAM Force eTap以上の電動コンポ採用率高い"
+  wheel_investment: "ホイール投資が顕著。決戦用カーボンディープリム(20-50万円/セット)+トレーニング用アルミ/カーボン+ヒルクライム用軽量ホイールを使い分け。複数セット所有が標準的"
+  annual_maintenance_cost: "50万円超/年(消耗品+パーツアップグレード+ホイール・タイヤ+ローラー/スマートトレーナー+レース遠征費+栄養補給+コーチング費)"
+  maintenance_practice: "日常〜深いメンテまで自分で実施できる知識・経験。複雑作業(電動コンポ調整、フレーム単位の整備)は信頼する専門ショップに集中して依頼。スマートトレーナー等のインドア機材も整備対象"
+  navigation_tool: "Garmin Edge(900/1040系) + Strava有料 + パワーメーター連携 + TrainingPeaks併用(ルート探索より走行ログ解析・トレーニング計画が中心)"
+  cycling_culture: "Strava重要視(セグメント/KOM/QOM狙い)、機材沼の住人、レースチーム/レースコミュニティに所属"
+  past_destinations: "ヤビツ・赤城山・霧降高原・乗鞍・富士ヒルクライム等のヒルクライム聖地、修善寺CSC・群馬CSC等のレース会場・練習周回コース"
+checklist:
+  - category: "レース志向特有の悩み・挫折要因"
+    rationale: "中級・初心者と異なる「FTP頭打ち」「オーバートレーニング」「家族・仕事との両立」「年齢による衰え」など競技志向特有の課題を抽出"
+    queries:
+      - "ロードバイク FTP 伸び悩み"
+      - "ロードバイク オーバートレーニング"
+      - "ロードバイク レース 引退 理由"
+  - category: "レース志向のルート設計ニーズ"
+    rationale: "練習用インターバルルート、ヒルクライム本番想定の予行演習、テーパリング期の調整ルート等、レース志向特有のルート要件を抽出"
+    queries:
+      - "ロードバイク インターバル 練習 ルート"
+      - "ヒルクライム 試走 ルート"
+      - "ロードバイク レース 前 練習"
+  - category: "レース志向が既存ツールに感じる限界"
+    rationale: "Garmin Edge・Strava・TrainingPeaks等のレース志向向け機能への細かい不満。パワー連携・トレーニング計画連携の要件を抽出"
+    queries:
+      - "Garmin Connect ルート 物足りない"
+      - "TrainingPeaks ルート連携"
+      - "Strava ヒルクライム セグメント"
+broadlistening_summary:
+  - category: "レース志向特有の悩み・挫折要因"
+    summary: |
+      【FTP伸び悩みの構造的原因】
+      「1年以上225WでFTPが頭打ち」(note.com)。原因は「無計画トレーニング」。
+      VO2max効果は6〜8週間で飽和、ピリオダイゼーションなしでは頭打ち。
+      Red Bull・専門メディア「適切な強度管理欠如、トレーニング計画の体系性不足」。
+      「現在ではFTPも上がりづらくなってきた」(note.com 5.5倍達成者でも同様)。
+
+      【オーバートレーニング症候群の現実】
+      「元に戻すのに2年かかった」実体験(note.com/moli9ma)。
+      ZWIFTワーカー9原因: 兆候無視・急激負荷増加・高強度頻度過多・日常ストレス・
+      体質不適合・総量把握不能・リカバリー不足・栄養不足・知識不足。
+      「トレーニング>リカバリー」が成立する構造。
+      シリアス層の標準パターン(平日インドア高強度+週末150-300km)はこのリスク高い。
+      20-30代週3-4日高強度許容、50代週2-3日推奨(年齢差明確)。
+
+      【引退・中断の実態】
+      tabirin記事「仕事>家族>年齢」の三重苦が引退要因。
+      栗村修コラム(j-sports)「昔みたいに走れないから」の元プロ離れ心理。
+      30代以降速筋衰え→スプリント系顕著低下(複数メディア)。
+      レース3年以内に20-30%離脱(tabirin調査)。
+
+      【シリアス層特有の葛藤】
+      「FTPが下がるのが怖くて休めない」→ 休まないからオーバートレーニング、悪循環。
+      レースカテゴリ昇格目標のプレッシャー。
+    sources:
+      - url: "https://note.com/tatamis_cycle/n/nff5c98aaaac9"
+        type: blog
+        note: "2年でFTP300W(5.5倍)達成、伸び悩みと解決策の実体験"
+      - url: "https://ameblo.jp/napioga510/entry-12695658880.html"
+        type: blog
+        note: "1年以上225W停滞→無計画ZwiftからSST+VO2Maxで15W向上"
+      - url: "https://zwiftworker.com/?p=4920"
+        type: blog
+        note: "ZWIFTワーカー: オーバートレーニング9原因の体系的整理"
+      - url: "https://tabirin2021.com/useful/examination/202110-018_roadbike_yameru/"
+        type: blog
+        note: "ロードバイクをやめる理由分析、仕事・家族・年齢"
+      - url: "https://news.jsports.co.jp/cycle/blog/kurimura/2021/04/post-1366.html"
+        type: primary
+        note: "栗村修(元プロ・監督)コラム。プロ引退後の自転車離れ心理(2021年4月)"
+      - url: "https://www.redbull.com/jp-ja/signs-of-overtraining"
+        type: primary
+        note: "Red Bull公式: オーバートレーニング症候群9つのチェックリスト"
+    self_assessment:
+      coverage: high
+      confidence: high
+      notes: "FTP・オーバートレーニング・引退理由3点とも具体的一次情報・実体験収集。年齢・仕事・家族の三重苦は個人ブログ中心で公式調査補強余地"
+  - category: "レース志向のルート設計ニーズ"
+    summary: |
+      【インターバル練習ルート要件】
+      日本語圏・英語圏とも「信号なし・交通量少・中断なし」が共通最重要要件。
+      関東代表例: 尾根幹(町田〜稲城20km、適度なアップダウン+直線)、荒川CR(80km超、信号ほぼゼロ)、
+      霞ヶ浦一周(125km、交通量少)。
+      TrainerRoad/FasCat「工業団地夕方・週末」「アウトアンドバック区間往復」。
+      「信号多→ブレーキ・加速・精神疲労の三重苦」競技者目線。
+
+      【ヒルクライム試走ニーズ】
+      富士ヒル試走実例(note.com/commutebymybike): 目的「高地デバフ体感とパワー計測」。
+      平地260W→高地230W(約1割落ち)実測、「260W×0.9=234W」予測一致確認。
+      試走なしではペース配分組めない、シリアス層の共通認識。
+      区間ごと通過タイム目標をトップチューブに貼る実践行動。
+
+      【テーパリング期練習ルート要件】
+      テーパリング(レース3週前から負荷7→6→5割段階低下)は「短めショートインターバル軽刺激」ルート必要。
+      長距離・高負荷不要、5-10分一定強度区間が短く繰り返せる構造が適切。
+      「疲れを残さず体に刺激を与える」という矛盾要件、長さより強度制御可能なルートが求められる。
+
+      【チーム練習固有要件】
+      集団走行は幅ある道・見通し良好が安全上必須。
+      直線区間がドラフティング・フォーメーション習得に必要。
+      修善寺CSC・群馬CSC等のレース会場周回コース練習も定番。
+      走り込み習熟度がレース成績に直結。
+    sources:
+      - url: "https://note.com/commutebymybike/n/ncbe5dc31fe24"
+        type: blog
+        note: "富士ヒル試走詳細記録。PWR・高地デバフ・タイム予測まで実践的一次情報(2024年)"
+      - url: "https://www.redbull.com/jp-ja/cycling-interval-training-guide"
+        type: primary
+        note: "Red Bull公式: ロードレース用目標別インターバルガイド"
+      - url: "https://trainright.com/cycling-interval-training-guide/"
+        type: primary
+        note: "CTS(Carmichael Training Systems)公式: 工業団地・アウトアンドバック推奨"
+      - url: "https://www.sbaa-bicycle.com/article/2098"
+        type: primary
+        note: "SBAA公式: 推奨コースと走り方、信号少ない道の安全性"
+      - url: "https://k-yama-cycling.com/?p=6532"
+        type: blog
+        note: "テーパリング・レスト週の必要性、競技者目線解説"
+      - url: "https://www.cyclowired.jp/news/node/390183"
+        type: primary
+        note: "cyclowired専門メディア: 富士ヒルゴールド挑戦記、試走と本番戦略"
+    self_assessment:
+      coverage: medium
+      confidence: medium
+      notes: "インターバル要件・試走ニーズ具体的収集。テーパリング期は間接情報中心、日本語競技者コミュニティ収集不足"
+  - category: "レース志向が既存ツールに感じる限界"
+    summary: |
+      【Stravaの限界】
+      2020年5月ルートビルダー・セグメントリーダーボード有料化(月525-800円)。国内競技者反発顕著。
+      CBN Blog調査: 継続課金予定25-30%、移行先Garmin/RWGPS同率1位。
+      競技者核心不満「リーダーボード見られなくなるとモチベーションがなくなる」セグメント競争へのこだわり。
+      ルート探索より「セグメントランキング喪失」が痛い。
+      Strava公式コミュニティで「Strava Fitness vs TrainingPeaks Fitness/Fatigueの大きな乖離」疑問
+      (アルゴリズム透明性不足)。
+      BikeRadar「Strava route builder often falls short」業界評価。
+
+      【Garmin Connectの限界】
+      ルート同期制限: 走行中のコース変更・再作成・転送が不可能、ライド中の臨機応変対応不可。
+      ナビ精度問題「警告が読みにくい・確認しようとすると消える」。
+      リルート機能が逆に邪魔(意図的ルート逸脱を許容しない)。
+      TrainingPeaksへの自動同期は評価高い。
+
+      【TrainingPeaksのルート機能の現実】
+      本来ルート探索・作成機能を持たない。2026年2月にGPXplore新機能追加(DCRainmaker)、
+      それ以前は外部GPX→インポートの多ステップ必須。
+      DCRainmaker「ワークフロー摩擦最小化の重要性」批判。
+      トレーニング管理(TSS/CTL/ATL/PMC)特化と「どこを走るか」計画には不向きの構造的分離。
+      有料版でないと詳細パワー/心拍分析不可。
+
+      【ツール共通の構造的弱さ】
+      Garmin/Strava/TrainingPeaksいずれも「走った後のログ解析」に優れるが
+      「これから走る場所を探索・計画」する機能は設計の中心にない。
+      競技者要件(信号密度・勾配分布・獲得標高制御・インターバル想定フラット区間)を
+      パラメータとしてルート生成するツールは存在しない。
+      RideWithGPSは代替評価だがTSS予測との統合は限定的。
+    sources:
+      - url: "https://blog.cbnanashi.net/2020/05/14316"
+        type: community
+        note: "CBN Blog: Stravaサブスク化への国内サイクリストアンケート(2020年5月)"
+      - url: "https://b4c.jp/strava-to-subscription/"
+        type: blog
+        note: "B4C専門ブログ: Strava有料化詳細と不満点"
+      - url: "https://www.dcrainmaker.com/2026/02/trainingpeaks-virtual-massively-gpxplore.html"
+        type: primary
+        note: "DC Rainmaker(英語圏最大手): TrainingPeaks GPXplore新機能解説と従来欠如批判(2026年2月)"
+      - url: "https://communityhub.strava.com/strava-features-chat-5/strava-fitness-vs-training-peaks-fitness-why-there-is-so-much-difference-8996"
+        type: community
+        note: "Strava公式コミュニティ: フィットネス指標乖離への競技者投稿"
+      - url: "https://denzo689.hatenablog.jp/entry/2021/05/16/113134"
+        type: blog
+        note: "Garmin Edge530ナビ機能詳細レビュー、走行中同期不可・ナビ精度問題(2021年5月)"
+      - url: "https://www.bikeradar.com/advice/fitness-and-training/strava-vs-komoot-which-cycling-app-is-best-for-you"
+        type: primary
+        note: "BikeRadar英語圏専門メディア: Stravaルートビルダー「falls short」評価"
+    self_assessment:
+      coverage: medium
+      confidence: medium
+      notes: "Strava有料化不満・TrainingPeaks/Garminルート機能弱さは十分。日本語競技者フォーラム・チームコミュニティ具体的不満声不足、英語圏で補完。TrainingPeaksルート機能不満は間接的(新機能導入による逆算)止まり"
+created_at: 2026-05-01
+last_updated: 2026-05-01
