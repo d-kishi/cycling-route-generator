@@ -1,0 +1,415 @@
+# =============================================================
+# 仮説キャンバス v1 (debate-001 反映版)
+# プロジェクト: サイクリングルート自動生成サービス
+# =============================================================
+
+meta:
+  project: "サイクリングルート自動生成サービス"
+  version: 1
+  updated: "2026-05-02"
+  phase: "draft"
+  miro_board_url: "https://miro.com/app/board/uXjVGl_jsKI=/"
+  source_documents:
+    - "doc/hypothesis-validation/draft-001.md"
+    - "doc/hypothesis-validation/debate-001.md"
+  participating_personas:
+    - persona-hobby
+    - persona-beginner
+    - persona-serious
+    - persona-casual
+    - persona-endurance
+
+# --- 仮説の根源(Phase 2全体のアンカー) ---
+root:
+  type: "課題"
+  statement: |
+    サイクリストは自分の目的・経験・走行スタイルに合うルートを継続的に得るのが難しい。
+    中級層は目的地枯渇、初心者は安全性・道迷い不安、ロング志向は補給計画、
+    競技志向は練習ルート設計、カジュアル層はテーマ起点探索など、
+    層ごとに異なる困難を抱えるが、それを束ねる手段が存在しない。
+  rationale: |
+    Step A(2026-05-01)で形成した5体ペルソナの broadlistening_summary に
+    各層の固有困難が一次情報として記録されている。
+    debate-001 の Round 1 で各層が4個ずつアイデアを提示し、Round 2 で
+    8つの対立軸(D1-D8)に対する各層の立場が確認された結果、
+    各層の困難の差異が一次情報レベルで裏付けられた。
+
+# --- 仮説キャンバス本体 ---
+canvas:
+
+  # ===========================
+  # 顧客/ユーザ側
+  # ===========================
+  customer:
+
+    situation:
+      id: C-SIT
+      title: "層ごとに異なるルート選択コスト"
+      hypothesis: |
+        サイクリストは経験レベル・走行スタイル・所属コミュニティに応じて、
+        ルート選択に異なる時間コストと認知コストを払っている。
+        中級層: 週末ライドのルート選びに30分-1時間
+        初心者: 経験者同行 or 慣れた範囲のみ走行可能
+        競技層: 練習目的(VO2max/Sweet Spot/インターバル)に応じた区間設計が必要
+        カジュアル層: テーマ・目的地を軸に毎回手動探索
+        ロング志向: 200km超のPC・補給・宿泊・充電計画が完走条件
+      confidence: medium
+      evidence:
+        - source: "Step A 5体ペルソナ"
+          detail: ".claude/personas/persona-*.yaml の attributes と broadlistening_summary に各層の状況が記録"
+        - source: "debate-001 Round 1"
+          detail: "5体ペルソナが各層固有の状況を裏付けるアイデアを4個ずつ提示"
+
+    overt_problem:
+      id: C-OVR
+      title: "同じルートの繰り返しに飽きる(中級層)"
+      hypothesis: |
+        中級ホビー層は気に入ったルートを繰り返し走るうちにマンネリ化し、
+        新しいルートの開拓は手動探索に依存しているため、アイデアが枯渇すると行き詰まる。
+        飽きの本質は「同じ道を物理的に通る」だけでなく
+        「同じ目的・同じテンションで走る」ことにあり、文脈変化(機材試走・カルチャー寄り道)で緩和される。
+      confidence: medium
+      evidence:
+        - source: "PistonHeads UK (2024)"
+          detail: "I love exploring but am getting to a point where there's not much I haven't explored locally (Correvor氏)"
+        - source: "BikeForums (2019)"
+          detail: "the thought of doing the same ride/route takes the joy out of it (mcours2006氏)"
+        - source: "PO実体験"
+          detail: "週末ライドで感じている目的地枯渇"
+        - source: "debate-001 persona-hobby Round 1 アイデア1-4"
+          detail: "未踏率・機材沼トリガー・ショップ起点・セグメント密度逆利用の4軸提案"
+
+    overt_problem_safety:
+      id: C-OVR-SFT
+      title: "安全ルート不安と道迷い恐怖(初心者層)"
+      hypothesis: |
+        初心者は車道走行・道迷い・パンク等への恐怖から、
+        経験者同行か自宅周辺の慣れた範囲しか走行できず、行動範囲が広がらない。
+        「安全ルート不安」(事前のルート選定問題)と「道迷い恐怖」(走行中のナビ問題)は分離可能な課題。
+      confidence: medium
+      evidence:
+        - source: "Yahoo!知恵袋 / ryusuke-tax.com (2020)"
+          detail: "1人で走行するのって、凄く怖いです / 地名を知らないと迷う"
+        - source: "bicycle-post.jp"
+          detail: "一人だと心が折れてしまう傾向、経験者同行への依存強い"
+        - source: "debate-001 persona-beginner Round 1 アイデア1-4"
+          detail: "卒業ロードマップ処方/車道率ヒートマップ/輪行リカバリー/お手本ルート図鑑の4軸提案"
+
+    overt_problem_supply:
+      id: C-OVR-SUP
+      title: "補給・PC・充電・仮眠の手動行程計画負荷(ロング志向)"
+      hypothesis: |
+        ロング志向は200km超のライドで、コンビニ間隔・自販機・道の駅営業時間・
+        PC位置・エスケープ地点・宿泊先・GPS充電タイミングを事前に手動マッピングする必要があり、
+        行程計画(itinerary planning)としての負荷がDNF回避の鍵となる。
+        単発の補給マッピングではなく、グロス速度を踏まえた時系列の総合計画が本質的負荷。
+      confidence: medium
+      evidence:
+        - source: "Audax Japan公式"
+          detail: "BRMは無サポート・回収車なし・自己責任。キューシート自力読解前提"
+        - source: "pbpresults.com / cyclecharts.uk"
+          detail: "PBP 2023: 全66カ国6,430名出走、DNF 80%以上が2日目までに発生"
+        - source: "BikeForumsランドヌール専門スレッド"
+          detail: "内蔵充電池では400km以上の走行に対応不能(実走20h前後が限界)"
+        - source: "debate-001 persona-endurance Round 1 アイデア1-4"
+          detail: "PC兼補給配置/グロス速度シミュレータ/GPS充電前提/紙キューシートPDFの4軸提案"
+
+    overt_problem_training:
+      id: C-OVR-TRN
+      title: "練習目的別ルート設計の手間(競技志向)"
+      hypothesis: |
+        競技志向は練習目的(VO2max・FTP・Sweet Spot・スプリント・ヒルクライム試走・チーム練・テーパリング)に応じて
+        毎回異なる勾配・距離・路面・信号密度のルート設計が必要だが、
+        既存ツールはトレーニング計画(.zwo/構造化ワークアウト)とルートが独立しており連携がない。
+        粒度として最低でも「インターバル種別×期分け×集団走行 vs 単独×本番試走 vs 通常練習」の4軸分解が必要。
+      confidence: low
+      evidence:
+        - source: "note.com tatamis_cycle"
+          detail: "1年以上225WでFTPが頭打ち / 無計画トレーニング / VO2max効果は6-8週間で飽和"
+        - source: "DCRainmaker (2026/2)"
+          detail: "TrainingPeaks GPXplore新機能解説と従来のワークフロー摩擦批判"
+        - source: "note.com/commutebymybike"
+          detail: "富士ヒル試走実例: 平地260W→高地230W実測、260W×0.9=234W予測一致"
+        - source: "debate-001 persona-serious Round 1 アイデア1-4"
+          detail: "ワークアウト連動/ヒルクライム試走モード/チーム練/オーバートレーニング兆候連動の4軸提案"
+
+    overt_problem_theme:
+      id: C-OVR-THM
+      title: "テーマ起点での複数スポット連結ルートの不在(カジュアル層)"
+      hypothesis: |
+        カジュアル層は「お花見ライド」「グルメ巡り」「御朱印」「廃線跡」「酒蔵巡り」など
+        テーマ起点でルートを組みたいが、Googleマップ自転車モードでは
+        テーマと自転車適性を両立した探索ができず、複数スポットを繋いだ一筆書きルートを
+        毎回手動で組み直している。
+        飽きの本質はhobby層と異なり、「未テーマ率」(同エリアでも試していないテーマがあるか)が指標となる。
+      confidence: low
+      evidence:
+        - source: "TraveVoice (2026/4)"
+          detail: "しまなみ海道2025年度自転車貸出7万9502件・インバウンド70%増 = 観光カジュアル層の市場規模"
+        - source: "Toy Bike等のテーマ設定型ライド事例"
+          detail: "お花見ライド、グルメライド等のテーマ起点ライド文化が存在"
+        - source: "つくば霞ヶ浦りんりんロード公式 / 関東十社"
+          detail: "ツール・ド・御朱印 等の自治体・観光協会レベルのコンテンツ化"
+        - source: "debate-001 persona-casual Round 1 アイデア1-4"
+          detail: "テーマ起点入力/駐輪可否マップ/旅先モード/Stravaなしエクスポートの4軸提案"
+
+    latent_problem:
+      id: C-LAT
+      title: "層を横断する『自分用ルートの不在』"
+      hypothesis: |
+        各層に共通する潜在課題は、自分の状況・目的・走行スタイルに合うルートが
+        自分用にカスタマイズされた形で得られないこと。
+        標準化されたコース集や他人のログを参考にするしかなく、
+        『自分のためのルート提案』を受け取る体験が存在しない。
+        この欠落は、層ごとに異なる「ルート選択コスト」が共通の構造的根源を持つことを示している。
+      confidence: medium
+      evidence:
+        - source: "debate-001 Round 2 全層共通指摘"
+          detail: "Strava/RideWithGPS/Komoot/Googleマップ/Garmin/TrainingPeaksは『走った後のログ解析』に強く『これから走る場所の探索・計画』に弱い、という認識を全層が共有"
+
+    alternatives:
+      id: C-ALT
+      title: "層別に異なる代替ツールの併用と一元化への潜在ニーズ"
+      hypothesis: |
+        現在は層ごとに異なるツール群を併用している。一元化への潜在ニーズが高いが
+        既存ツールはどれも層横断の自動生成を提供していない。
+        - hobby層: Strava中心+RideWithGPS/Komoot/Googleマップ併用(年7,800円のコスパ問題)
+        - beginner層: Strava無料 or 未導入+Googleマップ+経験者口頭指示
+        - serious層: Garmin Edge+Strava有料+TrainingPeaks+Zwift+Intervals.icu
+        - casual層: Googleマップ単独+雑誌・テレビ・友人の口コミ
+        - endurance層: Garmin Edge+RideWithGPS有料+Strava+紙キューシート+Excelタイムテーブル+ホテル予約サイト(4-6ツール併用)
+      confidence: medium
+      evidence:
+        - source: "Step A 各ペルソナ navigation_tool"
+          detail: "層ごとに異なるツール組み合わせが定着"
+        - source: "debate-001 Round 2 各層共通指摘"
+          detail: "C-ALTの代替手段は層別に分けるべきと全層が指摘"
+
+  # ===========================
+  # 提供者側
+  # ===========================
+  provider:
+
+    purpose:
+      id: P-PUR
+      title: "層を問わず『自分用ルート』を最小入力で得る"
+      hypothesis: |
+        サイクリストが層を問わず「今日はこういう走りがしたい」と思った時に、
+        層ごとの固有要件(安全性・補給・練習設計・テーマ・機材試走等)を考慮した
+        満足できるルートを最小入力で手に入れられる状態を作る。
+        「最小入力」の意味は層によって違う(beginner=次に挑戦すべき1本、serious=.zwo 1ファイル投下、
+        casual=テーマ選択、endurance=6軸数値モデル、hobby=数値+テーマピル)。
+      confidence: low
+      evidence:
+        - source: "PO自身のペイン"
+          detail: "毎週末のルート選びに感じるフラストレーション(hobby層当事者)"
+
+    vision:
+      id: P-VIS
+      title: "走ることに集中できる世界"
+      hypothesis: |
+        サイクリストが走ることそのものに集中できる世界。
+        ルート計画の手間をゼロに近づけ、層に関わらず
+        『自分のためのルート提案』を受け取れるようにする。
+      confidence: low
+      evidence: []
+
+    proposed_value:
+      id: P-VAL
+      title: "層別UI + 共通エンジン + プラグイン出口 + 抽象化レイヤー"
+      hypothesis: |
+        本サービスの提案価値は以下の6要素の統合:
+        1. **層別フロントエンド** (3-4種): プロファイル選択で各層専用UI
+           (beginner処方箋/casualテーマ/hobby階層/serious数値+ワークアウト/endurance6軸)
+        2. **共通ルート生成エンジン** (BRouter): 全層で共有、層別カスタムプロファイルで最適化
+        3. **プラグイン出口** : GPX/.tcx/紙PDF/Googleマップリンク/印刷スクショ/Excelタイムテーブル/OAuth転送(Garmin/TrainingPeaks/Strava)を並列実装、表示順は層別
+        4. **マーカーレイヤー化**: 駅・コンビニ・駐輪可否・営業時間・PC・自販機・自転車店・道の駅・ホテル等を層別ON/OFF
+        5. **ホームスポット抽象化**: ショップ・カフェ・神社・道の駅・自宅・レンタサイクル拠点を任意起点登録、層別デフォルト推奨
+        6. **新規性軸スライダー**: 経験・目的・期分けで自動調整、未踏率(GPSログ前提)+未テーマ率(テーマ非依存)を並列軸
+        加えて「数値駆動↔気分駆動」を粒度階層化(serious=フル数値、endurance=行程指標、hobby=軽量、beginner=3択、casual=構造化された気分)。
+      confidence: low
+      evidence:
+        - source: "技術調査"
+          detail: "BRouterのカスタムプロファイル機能で層別パラメータ実装可能"
+        - source: "debate-001 Round 2 合意点6項目"
+          detail: "5体ペルソナの統合提案として、レイヤー化・抽象化・スライダー化・プロファイル化が合意された"
+
+    solution:
+      id: P-SOL
+      title: "BRouter+Leaflet基盤 + プロファイル別フロントエンド3-4種 + プラグイン出口"
+      hypothesis: |
+        Webアプリケーションとして提供。
+        - 下層: BRouter(ルート生成エンジン) + Leaflet(地図表示) + OpenStreetMap(地図データ)
+        - 中層: 層別カスタムプロファイル(BRouterのカスタムルーティングプロファイル機能を活用)
+        - 上層: プロファイル別フロントエンド3-4種(初回オンボーディングまたは目的選択画面で自動判定)
+        - 出口: プラグイン方式で複数フォーマット並列実装(GPX/.tcx/紙PDF/Googleマップリンク/印刷PDF/Excelタイムテーブル/OAuth転送)
+        - レイヤー: マーカー(駅/コンビニ/駐輪可否/営業時間/PC/自販機等)を層別ON/OFF
+        - データ: ユーザ定義のホームスポット、走行履歴、層プロファイル設定をアカウント単位で保持
+        アカウント単位で複数プロファイル切替可能(同一ユーザがオフシーズンはhobby層的探索、本番期はserious層的試走など)。
+      confidence: medium
+      evidence:
+        - source: "技術調査"
+          detail: "BRouter + Leaflet + OpenStreetMapで層別プロファイル実装可能、セルフホスト可"
+        - source: "debate-001 Round 2 合意点1"
+          detail: "完全分離+共通エンジン構造に5体中4体(serious/casual/endurance+hobby階層派吸収)が合意"
+
+    advantage:
+      id: P-ADV
+      title: "PO=hobby層 + BRouterセルフホスト + 層別差別化 + ボルト型拡張戦略"
+      hypothesis: |
+        - PO自身がhobby層であり、実体験に基づくフィードバックを高速で回せる
+        - BRouterセルフホストにより層別カスタムプロファイルの自由度が高い
+        - 他ツールが特定層中心(StravaはKOM狙い、Komootはツーリング志向、Garmin Edgeはレース志向、Googleマップは観光向け)なのに対し、本サービスは層別差別化で広いペルソナをカバー
+        - 個人開発のためボルト単位で他層機能を段階拡張する柔軟性を持つ
+      confidence: low
+      evidence:
+        - source: "PO実体験"
+          detail: "hobby層当事者として課題を実感しており、自分自身が早期ユーザになる"
+
+  # ===========================
+  # 戦略仮説(MVP範囲・段階拡張)
+  # ===========================
+  strategy:
+
+    mvp_scope:
+      id: P-MVP
+      title: "MVPはhobby層中心、ボルトごとに他層機能を段階拡張"
+      hypothesis: |
+        MVPはhobby層(中級ホビー)中心で立ち上げ、最低限の機能は以下:
+        - 数値+軽量テーマピルの階層UI(hobbyフロントエンド)
+        - BRouterによるルート生成
+        - GPX/.tcxエクスポート + Googleマップリンク出力(層横断機能として最初から実装)
+        - 未踏率スライダー(hobby層が最も価値を感じる軸)
+        - マーカー基本セット(コンビニ・自転車店をON/OFF切替可)
+        ボルト単位で以下を段階拡張:
+        - Vol 2-3: beginner層フロントエンド(処方箋型UI、車道率ヒートマップ、お手本ルート図鑑)
+        - Vol 4-5: casual層フロントエンド(テーマ起点入力、駐輪可否マップ、旅先モード)
+        - Vol 6+: endurance層(補給PC計画、グロス速度シミュ)、serious層(構造化ワークアウト連動)は将来サブスクモジュール
+      confidence: medium
+      evidence:
+        - source: "PO判定 (Round 3 Q3)"
+          detail: "MVP範囲はhobby中心+ボルトごとに他層拡張を選択"
+        - source: "debate-001 persona-hobby + persona-serious"
+          detail: "MVP=hobby最適化+ARR後にPro追加の時間軸分離を両者が支持"
+
+    monetization:
+      id: P-MOD
+      title: "Free + 将来有料サブスクモジュール"
+      hypothesis: |
+        MVPはFree・広告なし(BRouterセルフホストで運用コストを抑える)。
+        ARR一定水準後に以下の有料モジュール追加を見込む:
+        - HRV/CTL/ATL/TSB連動(serious向け、Pro tier想定)
+        - OAuth転送(Garmin/TrainingPeaks/Strava、Pro tier想定)
+        - チーム練/集団走行モード(Race tier想定)
+        - PBP/LELロング行程計画(endurance向け、有料モジュール想定)
+        - 紙キューシートPDF高度版(endurance向け、有料モジュール想定)
+        無料コア機能を中級ホビー層が継続利用できることが大前提(Strava有料化で中級層の財布が破綻している市場文脈を踏まえる)。
+      confidence: low
+      evidence:
+        - source: "PO判定 (Round 3 Q1, Q2)"
+          detail: "HRV/CTL/ATLはMVP除外で将来有料モジュール、Free + 将来有料サブスクを採用"
+        - source: "broadlistening_summary"
+          detail: "Strava年7,800円(2023年10月)中級層離脱兆候、Coros/Wahooで無料代替可能の業界トレンド"
+
+  # ===========================
+  # ビジネス側(個人開発のため未検討)
+  # ===========================
+  business:
+    channel: null
+    metrics: null
+    revenue: null
+    market_size: null
+
+# --- 仮説間のリレーション(仮説の一本線) ---
+relations:
+  # 各層の状況(C-SIT) → 各層の顕在課題
+  - from: C-SIT
+    to: C-OVR
+    type: supports
+    note: "中級層の状況がマンネリ課題を生む"
+  - from: C-SIT
+    to: C-OVR-SFT
+    type: supports
+    note: "初心者層の状況が安全不安課題を生む"
+  - from: C-SIT
+    to: C-OVR-SUP
+    type: supports
+    note: "ロング志向の状況が補給・行程計画課題を生む"
+  - from: C-SIT
+    to: C-OVR-TRN
+    type: supports
+    note: "競技層の状況が練習設計課題を生む"
+  - from: C-SIT
+    to: C-OVR-THM
+    type: supports
+    note: "カジュアル層の状況がテーマ起点探索課題を生む"
+
+  # 顕在課題群 → 横断的潜在課題
+  - from: C-OVR
+    to: C-LAT
+    type: derives
+    note: "中級層のマンネリは『自分用ルート不在』の現れ"
+  - from: C-OVR-SFT
+    to: C-LAT
+    type: derives
+    note: "初心者の安全不安も『自分用ルート不在』の現れ"
+  - from: C-OVR-SUP
+    to: C-LAT
+    type: derives
+    note: "ロング志向の補給・行程計画手間も『自分用ルート不在』の現れ"
+  - from: C-OVR-TRN
+    to: C-LAT
+    type: derives
+    note: "競技層の練習設計手間も『自分用ルート不在』の現れ"
+  - from: C-OVR-THM
+    to: C-LAT
+    type: derives
+    note: "カジュアル層のテーマ起点不在も『自分用ルート不在』の現れ"
+
+  # 潜在課題 → 目的・提案価値
+  - from: C-LAT
+    to: P-PUR
+    type: derives
+    note: "横断的潜在課題から目的が導出される"
+  - from: C-LAT
+    to: P-VAL
+    type: derives
+    note: "潜在課題が層別UI+共通エンジン+プラグイン出口の価値を裏付ける"
+
+  # 代替手段 → 提案価値
+  - from: C-ALT
+    to: P-VAL
+    type: supports
+    note: "既存手段では層横断的自動生成ができないことが提案価値の差別化根拠"
+
+  # 目的 → ビジョン
+  - from: P-PUR
+    to: P-VIS
+    type: derives
+    note: "目的の延長線上にビジョンがある"
+
+  # 提案価値 → ソリューション
+  - from: P-VAL
+    to: P-SOL
+    type: derives
+    note: "層別UI+共通エンジン+プラグイン出口を BRouter+Leaflet+プロファイル別フロントエンド3-4種 で実現"
+
+  # 優位性 → ソリューション
+  - from: P-ADV
+    to: P-SOL
+    type: supports
+    note: "PO実体験+セルフホスト+ボルト型拡張で実装の自由度確保"
+
+  # MVP戦略 / マネタイズ
+  - from: P-MVP
+    to: P-SOL
+    type: derives
+    note: "MVPはhobby層フロントエンド+共通エンジンの最小構成で立ち上げ、ボルトごとに他層フロントエンド追加"
+  - from: P-MOD
+    to: P-MVP
+    type: supports
+    note: "Free + 将来有料サブスクモジュールでhobby中心MVPを成立させる課金モデル"
+  - from: P-ADV
+    to: P-MVP
+    type: supports
+    note: "PO=hobby層当事者であることがhobby中心MVP戦略を裏付ける"
