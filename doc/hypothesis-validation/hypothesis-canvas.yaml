@@ -1,23 +1,32 @@
 # =============================================================
-# 仮説キャンバス v1 (debate-001 反映版)
+# 仮説キャンバス v2 (debate-002 反映版: グロス速度の中級以上共通課題化)
 # プロジェクト: サイクリングルート自動生成サービス
 # =============================================================
 
 meta:
   project: "サイクリングルート自動生成サービス"
-  version: 1
-  updated: "2026-05-02"
+  version: 2
+  updated: "2026-05-04"
   phase: "draft"
   miro_board_url: "https://miro.com/app/board/uXjVGl_jsKI=/"
   source_documents:
     - "doc/hypothesis-validation/draft-001.md"
     - "doc/hypothesis-validation/debate-001.md"
+    - "doc/hypothesis-validation/debate-002.md"
   participating_personas:
     - persona-hobby
     - persona-beginner
     - persona-serious
     - persona-casual
     - persona-endurance
+  changelog_v2:
+    - "C-OVR-TIME 新規追加(中級以上+関連層、所要時間見積もりギャップ)"
+    - "C-OVR-SUP 再定義(7軸統合計画として明確化、認定イベント特有の高度行程設計)"
+    - "C-OVR-SFT 補強(離脱フォールバック計画=輪行リカバリーを心理的安全基地として追記)"
+    - "C-OVR-TRN 補強(Z2 Base練習の有効有酸素時間最大化設計を追記)、confidence low→medium"
+    - "P-VAL 6要素拡張(ラベル翻訳レイヤー、stop_type enum、離脱フォールバック計画レイヤー、3階層anchor、粒度階層再定義)"
+    - "P-MVP 段階拡張更新(Volt 1先取り、Volt 2-3卒業MS+離脱フォールバック、Volt 6+コア(1)-(3)、Volt 7+残り)"
+    - "P-VAL D5 粒度階層: serious(練習時)削除、beginner成長期追加、Stage連続版+二軸テーブル"
 
 # --- 仮説の根源(Phase 2全体のアンカー) ---
 root:
@@ -27,12 +36,16 @@ root:
     中級層は目的地枯渇、初心者は安全性・道迷い不安、ロング志向は補給計画、
     競技志向は練習ルート設計、カジュアル層はテーマ起点探索など、
     層ごとに異なる困難を抱えるが、それを束ねる手段が存在しない。
+    加えて、中級以上の層は「実走時間=移動時間+補給/休憩」を含む所要時間の
+    事前見積もりにも共通して失敗しており、ライド体験の社会的コスト
+    (家族予定への影響)・本番パフォーマンス(レースペース配分)・
+    ライド成立可否(BRM制限時間)が損なわれる。
   rationale: |
     Step A(2026-05-01)で形成した5体ペルソナの broadlistening_summary に
     各層の固有困難が一次情報として記録されている。
-    debate-001 の Round 1 で各層が4個ずつアイデアを提示し、Round 2 で
-    8つの対立軸(D1-D8)に対する各層の立場が確認された結果、
-    各層の困難の差異が一次情報レベルで裏付けられた。
+    debate-001 の Round 1-3 で各層の困難の差異が一次情報レベルで裏付けられ、
+    debate-002(2026-05-04)でグロス速度=中級以上共通の所要時間見積もりギャップ
+    として再構成された結果、層別の困難と層横断の困難の二重構造が明確化された。
 
 # --- 仮説キャンバス本体 ---
 canvas:
@@ -81,11 +94,15 @@ canvas:
 
     overt_problem_safety:
       id: C-OVR-SFT
-      title: "安全ルート不安と道迷い恐怖(初心者層)"
+      title: "安全ルート不安と道迷い恐怖+離脱フォールバックの不在(初心者層)"
       hypothesis: |
         初心者は車道走行・道迷い・パンク等への恐怖から、
         経験者同行か自宅周辺の慣れた範囲しか走行できず、行動範囲が広がらない。
         「安全ルート不安」(事前のルート選定問題)と「道迷い恐怖」(走行中のナビ問題)は分離可能な課題。
+        加えて「いつでも輪行で帰れる」という離脱フォールバック計画(輪行可能駅+終電時刻+
+        自転車店マーカー等)を心理的安全基地として可視化することで、初心者の遠出心理ハードルが
+        構造的に下がる。これは endurance 層の DNF 時輪行帰宅計画(C-OVR-SUP の(7)軸)と
+        同一エンジン強度違いで実装可能。
       confidence: medium
       evidence:
         - source: "Yahoo!知恵袋 / ryusuke-tax.com (2020)"
@@ -94,35 +111,59 @@ canvas:
           detail: "一人だと心が折れてしまう傾向、経験者同行への依存強い"
         - source: "debate-001 persona-beginner Round 1 アイデア1-4"
           detail: "卒業ロードマップ処方/車道率ヒートマップ/輪行リカバリー/お手本ルート図鑑の4軸提案"
+        - source: "debate-002 D11 beginner-endurance合意"
+          detail: "輪行リカバリー(beginner)とDNF時輪行帰宅計画(endurance)は同インフラ(駅DB+終電時刻+自転車店分布)で実装可能と判明"
 
     overt_problem_supply:
       id: C-OVR-SUP
-      title: "補給・PC・充電・仮眠の手動行程計画負荷(ロング志向)"
+      title: "制限時間ペナルティ下での7軸統合計画(ロング志向)"
       hypothesis: |
-        ロング志向は200km超のライドで、コンビニ間隔・自販機・道の駅営業時間・
-        PC位置・エスケープ地点・宿泊先・GPS充電タイミングを事前に手動マッピングする必要があり、
-        行程計画(itinerary planning)としての負荷がDNF回避の鍵となる。
-        単発の補給マッピングではなく、グロス速度を踏まえた時系列の総合計画が本質的負荷。
+        ロング志向(BRM/PBP/LEL等の認定ブルベ)は、制限時間という外的強制
+        (PC不通過=即失格・回収車なし・自己責任)の下で、以下の7軸を
+        時系列で統合計画する必要がある:
+        (1) PC通過時刻判定: 各PCのオープン/クローズ時刻に対する遅延量を15-25kmごとに動的再計算
+        (2) 補給ポイント時系列マッピング: コンビニ間隔/自販機/道の駅営業時間/個人商店の事前マッピング
+        (3) 仮眠予算配分: 400km=20分〜1時間 / 600km=4-5h / 1000km=最低3h の距離別予算
+        (4) GPS/ライト類のバッテリー予算: Edge内蔵電池の400km限界、外部バッテリー脱落リスク、ハブダイナモ運用
+        (5) 雨天時のエスケープルート: 山岳路線封鎖時の代替路、PC到達優先度の動的修正
+        (6) 機材トラブル時の対応経路: 自転車店分布、輪行可能駅、ホイール交換可能ショップ
+        (7) DNF時の輪行帰宅計画: 各地点から最寄駅までの距離・終電時刻・宿泊先候補
+        所要時間見積もり(C-OVR-TIME)は出発時刻/帰宅時刻のラフ予測で完結するが、
+        本仮説は「失敗時のペナルティが大きい認定イベント特有の高度行程設計」として
+        独立した固有課題である。C-OVR-TIMEとの境界基準は「認定イベントの有無」。
       confidence: medium
       evidence:
         - source: "Audax Japan公式"
-          detail: "BRMは無サポート・回収車なし・自己責任。キューシート自力読解前提"
+          detail: "BRMは無サポート・回収車なし・自己責任。キューシート自力読解前提。「平均時速15km相当」がグロス速度概念の根源"
         - source: "pbpresults.com / cyclecharts.uk"
-          detail: "PBP 2023: 全66カ国6,430名出走、DNF 80%以上が2日目までに発生"
+          detail: "PBP 2023: 全66カ国6,430名出走、DNF 80%以上が2日目までに発生 → 7軸のうち1-2個破綻だけでDNF"
         - source: "BikeForumsランドヌール専門スレッド"
           detail: "内蔵充電池では400km以上の走行に対応不能(実走20h前後が限界)"
+        - source: "longride.org"
+          detail: "400/600/1000km別仮眠戦略 — 仮眠予算は距離別に大きく異なる固有知識"
+        - source: "tourdekimamani.com"
+          detail: "Garmin拡張バッテリー300kmブルベインプレ、落下事故リスク報告"
+        - source: "cannonball24.com"
+          detail: "PBP 2023費用詳細 529,786円 — 制限時間外で水泡に帰す重圧"
         - source: "debate-001 persona-endurance Round 1 アイデア1-4"
           detail: "PC兼補給配置/グロス速度シミュレータ/GPS充電前提/紙キューシートPDFの4軸提案"
+        - source: "debate-002 D10 endurance確定提案"
+          detail: "7軸統合計画として再定義、C-OVR-TIMEと境界明確化"
 
     overt_problem_training:
       id: C-OVR-TRN
-      title: "練習目的別ルート設計の手間(競技志向)"
+      title: "練習目的別ルート設計+期分け別有効時間管理の手間(競技志向)"
       hypothesis: |
         競技志向は練習目的(VO2max・FTP・Sweet Spot・スプリント・ヒルクライム試走・チーム練・テーパリング)に応じて
         毎回異なる勾配・距離・路面・信号密度のルート設計が必要だが、
         既存ツールはトレーニング計画(.zwo/構造化ワークアウト)とルートが独立しており連携がない。
         粒度として最低でも「インターバル種別×期分け×集団走行 vs 単独×本番試走 vs 通常練習」の4軸分解が必要。
-      confidence: low
+        加えて期分け別の時間管理指標を切り替える設計が必要:
+        - Z2 Base期: 「**有効有酸素時間**」(信号停止・補給での心拍ドロップを除外した中断除外時間)の最大化が目標。
+          グロス速度(中断込み)とは符号が逆方向の指標(中断時間を最小化したい)
+        - テーパリング期: 「総走行時間上限」管理が目標(過剰走行回避)
+        - 本番試走期: 「区間通過タイム精度(±5分)」が目標(C-OVR-TIMEと連動)
+      confidence: medium  # debate-002 D3 合意による補強で low → medium 格上げ
       evidence:
         - source: "note.com tatamis_cycle"
           detail: "1年以上225WでFTPが頭打ち / 無計画トレーニング / VO2max効果は6-8週間で飽和"
@@ -130,8 +171,12 @@ canvas:
           detail: "TrainingPeaks GPXplore新機能解説と従来のワークフロー摩擦批判"
         - source: "note.com/commutebymybike"
           detail: "富士ヒル試走実例: 平地260W→高地230W実測、260W×0.9=234W予測一致"
+        - source: "Strava公式コミュニティ"
+          detail: "Strava Fitness vs TrainingPeaks Fitness/Fatigueの大きな乖離 → 中断時間に汚染される指標を一括化する設計の失敗事例"
         - source: "debate-001 persona-serious Round 1 アイデア1-4"
           detail: "ワークアウト連動/ヒルクライム試走モード/チーム練/オーバートレーニング兆候連動の4軸提案"
+        - source: "debate-002 D3 serious-endurance合意"
+          detail: "Z2 Base練習の本質は『有効有酸素時間』(中断除外)、グロス速度とは符号が逆方向。PBP/BRMでもPM運用者はグロス速度と平均NPを別軸で併用"
 
     overt_problem_theme:
       id: C-OVR-THM
@@ -153,19 +198,68 @@ canvas:
         - source: "debate-001 persona-casual Round 1 アイデア1-4"
           detail: "テーマ起点入力/駐輪可否マップ/旅先モード/Stravaなしエクスポートの4軸提案"
 
+    overt_problem_time:
+      id: C-OVR-TIME  # debate-002 で新規追加
+      title: "所要時間見積もりギャップ(中級以上+関連層)"
+      hypothesis: |
+        中級以上のサイクリスト(hobby/serious/endurance)は「実走時間=移動時間+補給/立ち寄り」の
+        所要時間を事前に見積もろうとするが、既存ツールは平均速度の単純割り算しか提供せず、
+        補給・立ち寄り・信号停止・上り下りでの速度変化を含む実態と乖離する。
+        加えて時刻起点が両端いずれにも置ける(出発時刻↔到着時刻の双方向逆算+集合時刻起点逆算)
+        機能が既存ツールでは不可能で、外部時刻制約への適合計画が手作業で破綻する。
+
+        [統合定義]
+        所要時間見積もり = 出発時刻 × 総距離 × 補給/立ち寄り予算で、
+        終点時刻 or 区間通過時刻を予測する。同一計算エンジン(BRouter基盤)から派生する
+        出力の粒度違いとして、層別運用が成立する。
+
+        [層別運用粒度]
+        - hobby: 出発/帰宅時刻 + 立ち寄り時刻ピン、誤差幅±30分
+        - serious(本番): 区間通過タイム精度±5分(本番ペース配分、トップチューブ貼付想定)
+        - endurance(非ブルベ時): 全行程所要時間の総予測(150km自主ロング等)
+          認定ブルベでの制限時間ペナルティ管理は C-OVR-SUP に分離
+        - (関連層) casual: 立ち寄り(カフェ・参拝)込みのランチ着・帰宅時刻、逆算モード起点
+        - (関連層) beginner成長期: 家族との約束時刻、出発/帰宅時刻のラフ表示
+
+        逆算モード(到着時刻→出発時刻、PC通過時刻→ペース配分、集合時刻→起床時刻)も
+        同じエンジンの符号反転で提供する。
+        出発時刻・帰宅時刻・補給/立ち寄りタイミング・本番ペース配分・到着時刻逆算の
+        見積もりに失敗し、ライド体験の社会的コスト(家族予定への影響)・本番パフォーマンス・
+        ライド成立可否(行ける/行けない判断)が損なわれる。
+      confidence: low
+      evidence:
+        - source: "debate-002 D5 統合提案 (debate-001延長)"
+          detail: "endurance=行程指標(グロス速度・補給間隔・仮眠予算)と粒度階層化された議論を、中級以上+関連層に層横断化"
+        - source: "debate-002 persona-hobby Round 1 意見1"
+          detail: "都内発80-120kmで30-90分の帰宅時刻ズレ、家族持ち中級層の継続障壁"
+        - source: "debate-002 persona-serious Round 1 意見1"
+          detail: "富士ヒル試走『区間通過タイム目標トップチューブ貼付』『平地260W→高地230W実測』"
+        - source: "debate-002 persona-casual Round 1 意見1-2"
+          detail: "wimo.co.jp『1時間走→コーヒー→30分走→ランチ』典型パターン、知恵袋q10262445820『Googleマップ早すぎる(1.5倍)』、ringringroad.com『ツール・ド・御朱印』"
+        - source: "debate-002 persona-beginner Round 1 意見1"
+          detail: "Googleマップが30km・1時間40分と出すが実際は倍近く、家族に2時間遅れる経験で河川敷に閉じこもる"
+        - source: "debate-002 persona-endurance Round 1 意見1-2"
+          detail: "PBP 2023でPC通過予定時刻に対する遅延量を15-25kmごとに再計算、JSNA『30〜60g炭水化物補給』、SBAA『1〜1.5時間ごとに何か1つ摂取』"
+
     latent_problem:
       id: C-LAT
-      title: "層を横断する『自分用ルートの不在』"
+      title: "層を横断する『自分用ルートの不在』+『所要時間ギャップ』"
       hypothesis: |
         各層に共通する潜在課題は、自分の状況・目的・走行スタイルに合うルートが
         自分用にカスタマイズされた形で得られないこと。
         標準化されたコース集や他人のログを参考にするしかなく、
         『自分のためのルート提案』を受け取る体験が存在しない。
         この欠落は、層ごとに異なる「ルート選択コスト」が共通の構造的根源を持つことを示している。
+        加えて、中級以上+関連層には『実走時間=移動時間+補給/立ち寄り』を含む
+        所要時間見積もりが既存ツールでは不可能、という共通課題(C-OVR-TIME)が
+        重なっており、層を横断する潜在的不満は「ルート選択」と「所要時間管理」の二重構造
+        として理解すべきである。
       confidence: medium
       evidence:
         - source: "debate-001 Round 2 全層共通指摘"
           detail: "Strava/RideWithGPS/Komoot/Googleマップ/Garmin/TrainingPeaksは『走った後のログ解析』に強く『これから走る場所の探索・計画』に弱い、という認識を全層が共有"
+        - source: "debate-002 Round 2 多層連合"
+          detail: "C-OVR-TIME(所要時間見積もりギャップ)が中級以上+関連層共通として4層連合(hobby/casual/beginner/endurance + serious本番ペース配分)で確定"
 
     alternatives:
       id: C-ALT
@@ -192,58 +286,118 @@ canvas:
 
     purpose:
       id: P-PUR
-      title: "層を問わず『自分用ルート』を最小入力で得る"
+      title: "層を問わず『自分用ルート』+『信頼できる所要時間予測』を最小入力で得る"
       hypothesis: |
         サイクリストが層を問わず「今日はこういう走りがしたい」と思った時に、
         層ごとの固有要件(安全性・補給・練習設計・テーマ・機材試走等)を考慮した
         満足できるルートを最小入力で手に入れられる状態を作る。
+        加えて「いつ出発して、どこに何時頃立ち寄り、何時頃帰宅できるか」の
+        信頼できる時刻予測を、層別の運用粒度に応じた表現で提供する。
         「最小入力」の意味は層によって違う(beginner=次に挑戦すべき1本、serious=.zwo 1ファイル投下、
         casual=テーマ選択、endurance=6軸数値モデル、hobby=数値+テーマピル)。
       confidence: low
       evidence:
         - source: "PO自身のペイン"
           detail: "毎週末のルート選びに感じるフラストレーション(hobby層当事者)"
+        - source: "debate-002 全層合意"
+          detail: "C-OVR-TIME(所要時間見積もりギャップ)が中級以上+関連層共通の潜在課題として確定"
 
     vision:
       id: P-VIS
       title: "走ることに集中できる世界"
       hypothesis: |
         サイクリストが走ることそのものに集中できる世界。
-        ルート計画の手間をゼロに近づけ、層に関わらず
-        『自分のためのルート提案』を受け取れるようにする。
+        ルート計画と所要時間管理の手間をゼロに近づけ、層に関わらず
+        『自分のためのルート提案』と『信頼できる時刻予測』を受け取れるようにする。
       confidence: low
       evidence: []
 
     proposed_value:
       id: P-VAL
-      title: "層別UI + 共通エンジン + プラグイン出口 + 抽象化レイヤー"
+      title: "層別UI + 共通エンジン + プラグイン出口 + 6要素抽象化レイヤー"
       hypothesis: |
         本サービスの提案価値は以下の6要素の統合:
-        1. **層別フロントエンド** (3-4種): プロファイル選択で各層専用UI
-           (beginner処方箋/casualテーマ/hobby階層/serious数値+ワークアウト/endurance6軸)
-        2. **共通ルート生成エンジン** (BRouter): 全層で共有、層別カスタムプロファイルで最適化
-        3. **プラグイン出口** : GPX/.tcx/紙PDF/Googleマップリンク/印刷スクショ/Excelタイムテーブル/OAuth転送(Garmin/TrainingPeaks/Strava)を並列実装、表示順は層別
-        4. **マーカーレイヤー化**: 駅・コンビニ・駐輪可否・営業時間・PC・自販機・自転車店・道の駅・ホテル等を層別ON/OFF
-        5. **ホームスポット抽象化**: ショップ・カフェ・神社・道の駅・自宅・レンタサイクル拠点を任意起点登録、層別デフォルト推奨
-        6. **新規性軸スライダー**: 経験・目的・期分けで自動調整、未踏率(GPSログ前提)+未テーマ率(テーマ非依存)を並列軸
-        加えて「数値駆動↔気分駆動」を粒度階層化(serious=フル数値、endurance=行程指標、hobby=軽量、beginner=3択、casual=構造化された気分)。
+
+        1. **層別フロントエンド + ラベル翻訳レイヤー** (5層6スロット):
+           プロファイル選択で各層専用UI。同一計算エンジンの出力を5層6スロット
+           (endurance / serious本番 / serious練習 / hobby / casual / beginner)で
+           ラベル翻訳。「グロス速度」用語は endurance UI/設定画面のみ表示、
+           他層は完全排除(serious本番=「区間通過タイム」、serious練習=「Z2有効有酸素時間」、
+           hobby=「所要時間見積もり/帰宅時刻ラフ表示」、casual=「だいたい○時頃ランチ着・帰宅」、
+           beginner=「9:00 AM → 12:30 PM」+3色バー)。
+           内部計算エンジン1本+ラベル翻訳テーブルで実装。
+           ラベルは事前/事中/事後の3時点でも切替可能(casual A/B類型対応)。
+
+        2. **共通ルート生成エンジン** (BRouter):
+           全層で共有、層別カスタムプロファイルで最適化。
+           信号情報レイヤー(都市部 OSM signal タグ + 3カテゴリ概算ハイブリッド)を
+           エンジン内部処理として組込み、所要時間予測精度を担保。
+
+        3. **プラグイン出口 + stop_type enum**:
+           GPX/.tcx/紙PDF/Googleマップリンク/印刷スクショ/Excelタイムテーブル/
+           OAuth転送(Garmin/TrainingPeaks/Strava)を並列実装、表示順は層別。
+           内部データモデルとして stop_type enum
+           (refuel/rest/sightseeing/equipment/sleep/escape/lunch)を持ち、
+           D6「立ち寄り」フレーム再フレーミングを全層UI翻訳で実装
+           (beginner/casual/hobby UIは「立ち寄り」、serious/endurance UIは「補給」「PC補給」)。
+           「立ち寄り時間は計画の一部です」UIメッセージで罪悪感払拭。
+
+        4. **マーカーレイヤー化 + 離脱フォールバック計画レイヤー**:
+           駅・コンビニ・駐輪可否・営業時間・PC・自販機・自転車店・道の駅・ホテル等を
+           層別ON/OFF。加えて「離脱フォールバック計画レイヤー」(輪行可能駅+終電時刻+
+           自転車店分布+宿泊先候補)を共通インフラとして実装し、
+           beginner=「いつでも輪行で帰れる心理的安全基地」と
+           endurance=「DNF時輪行帰宅計画」を同エンジン強度違いで提供。
+
+        5. **ホームスポット抽象化(3階層 anchor + PC penalty optional)**:
+           start_anchor / via_anchor / end_anchor の3階層構造で、ショップ・カフェ・
+           神社・道の駅・自宅・レンタサイクル拠点・駅(輪行)を任意起点登録。
+           4要素機能 = 任意起点登録 / 起点滞在時間プリセット / 戻り時刻ベース計画 /
+           解散・返却制約時刻。
+           start = end パターン(hobby集合解散/casual寺社巡り)と start ≠ end パターン
+           (ランチ目的地/輪行)の両方をカバー。
+           anchor の optional 属性として PC penalty (open_time / close_time / fail_action)
+           を持たせ、endurance BRM用途は penalty 必須(=PC、赤枠+カウントダウン+貯金量UI)、
+           hobby/casual用途は penalty=null(任意立ち寄り)。
+           初心者の「ホームスポット初登録」を beginner→hobby 卒業マイルストーンUIとして実装
+           (Volt 2-3でソフト提案+自己申告)。
+
+        6. **新規性軸スライダー + 粒度階層**:
+           経験・目的・期分けで自動調整、未踏率(GPSログ前提)+未テーマ率(テーマ非依存)を並列軸。
+           加えて「数値駆動↔気分駆動」を粒度階層(Stage連続版+二軸テーブル+個別軸独立スライダー)で実装:
+           - Stage連続軸(年数×目的×個別軸):
+             Stage 1 (beginner成長期) = 入門所要時間予測(出発/帰宅時刻のみ、誤差幅±60分、補給OFF)
+             Stage 2 (hobby) = 軽量所要時間予測(時刻ピン+補給間隔目安、誤差幅±30分)
+             Stage 3 (serious練習期) = 有効有酸素時間=中断除外 [C-OVR-TRN内]
+             Stage 4 (serious本番期) = 区間通過タイム精度±5分(本番ペース配分)
+             [並列] endurance = 長時間行程指標(7軸統合計画 [C-OVR-SUP]、グロス速度シミュ)
+             [並列] casual = 構造化された気分(逆算モード+滞在時間ラベル+カフェ着/帰宅時刻)
+           - 個別軸(プロファイル内独立スライダー、層内自由切替):
+             誤差幅・補給間隔表示・推奨距離レンジ
+           - 精密モード/ラフモードトグル(同一プロファイル内のUI粒度切替)
       confidence: low
       evidence:
         - source: "技術調査"
           detail: "BRouterのカスタムプロファイル機能で層別パラメータ実装可能"
         - source: "debate-001 Round 2 合意点6項目"
           detail: "5体ペルソナの統合提案として、レイヤー化・抽象化・スライダー化・プロファイル化が合意された"
+        - source: "debate-002 Round 2 多層連合"
+          detail: "5層6スロットラベル翻訳テーブル(全員合意)、3階層anchor+4要素機能(hobby+casual+endurance+beginner合意)、stop_type enum(全員合意)、離脱フォールバック計画(beginner+endurance合意)、Stage連続版+二軸テーブル(beginner+hobby+serious合意)、信号情報エンジン内部Volt 1必須(serious+beginner+casual支持)"
 
     solution:
       id: P-SOL
-      title: "BRouter+Leaflet基盤 + プロファイル別フロントエンド3-4種 + プラグイン出口"
+      title: "BRouter+Leaflet基盤 + プロファイル別フロントエンド3-4種 + プラグイン出口 + 共通インフラ"
       hypothesis: |
         Webアプリケーションとして提供。
         - 下層: BRouter(ルート生成エンジン) + Leaflet(地図表示) + OpenStreetMap(地図データ)
-        - 中層: 層別カスタムプロファイル(BRouterのカスタムルーティングプロファイル機能を活用)
+        - 中層:
+          - 層別カスタムプロファイル(BRouterのカスタムルーティングプロファイル機能)
+          - 信号情報レイヤー(OSM highway=traffic_signals、都市部優先 + 3カテゴリ概算ハイブリッド)
+          - 所要時間予測エンジン(stop_type enum + 3階層anchor + 双方向化逆算 + ラベル翻訳テーブル)
+          - 離脱フォールバック計画エンジン(輪行可能駅DB + 終電時刻 + 自転車店分布 + 宿泊先候補)
         - 上層: プロファイル別フロントエンド3-4種(初回オンボーディングまたは目的選択画面で自動判定)
         - 出口: プラグイン方式で複数フォーマット並列実装(GPX/.tcx/紙PDF/Googleマップリンク/印刷PDF/Excelタイムテーブル/OAuth転送)
-        - レイヤー: マーカー(駅/コンビニ/駐輪可否/営業時間/PC/自販機等)を層別ON/OFF
+        - レイヤー: マーカー(駅/コンビニ/駐輪可否/営業時間/PC/自販機/離脱フォールバック等)を層別ON/OFF
         - データ: ユーザ定義のホームスポット、走行履歴、層プロファイル設定をアカウント単位で保持
         アカウント単位で複数プロファイル切替可能(同一ユーザがオフシーズンはhobby層的探索、本番期はserious層的試走など)。
       confidence: medium
@@ -252,6 +406,8 @@ canvas:
           detail: "BRouter + Leaflet + OpenStreetMapで層別プロファイル実装可能、セルフホスト可"
         - source: "debate-001 Round 2 合意点1"
           detail: "完全分離+共通エンジン構造に5体中4体(serious/casual/endurance+hobby階層派吸収)が合意"
+        - source: "debate-002 Round 2 技術合意"
+          detail: "信号情報エンジン内部処理(serious提案)、OSM signalタグ取得(endurance妥協案)、stop_type enum単一スキーマ(casual提案)、anchor 3階層 + PC penalty optional(hobby+endurance合意)、双方向化逆算は同一エンジン符号反転で実装可能(endurance技術根拠)"
 
     advantage:
       id: P-ADV
@@ -273,24 +429,62 @@ canvas:
 
     mvp_scope:
       id: P-MVP
-      title: "MVPはhobby層中心、ボルトごとに他層機能を段階拡張"
+      title: "MVPはhobby層中心+層横断軽量機能、ボルトごとに他層機能を段階拡張"
       hypothesis: |
-        MVPはhobby層(中級ホビー)中心で立ち上げ、最低限の機能は以下:
-        - 数値+軽量テーマピルの階層UI(hobbyフロントエンド)
+        MVPはhobby層(中級ホビー)中心で立ち上げ、加えて層横断で価値のある軽量機能を
+        Volt 1 から先取り組み込み。
+
+        **Volt 1 (MVP)**:
+        - hobby層フロントエンド (数値+軽量テーマピルの階層UI)
         - BRouterによるルート生成
-        - GPX/.tcxエクスポート + Googleマップリンク出力(層横断機能として最初から実装)
+        - **信号情報レイヤー(エンジン内部処理、UI表示は層別ON/OFF)** [debate-002 Q2]
+        - **軽量所要時間予測** (平均速度+補給/立ち寄り想定時間ベースの所要時間ラフ表示、
+          時刻ピン+誤差幅±30分+stop_type enum、双方向化逆算) [debate-002 Q3+Q7軽量]
+        - **3階層anchor軽量実装** (start/via/end + 4要素機能:
+          任意起点登録/滞在時間プリセット/戻り時刻ベース/制約時刻) [debate-002 Q3]
+        - GPX/.tcxエクスポート + Googleマップリンク出力(層横断機能)
         - 未踏率スライダー(hobby層が最も価値を感じる軸)
-        - マーカー基本セット(コンビニ・自転車店をON/OFF切替可)
-        ボルト単位で以下を段階拡張:
-        - Vol 2-3: beginner層フロントエンド(処方箋型UI、車道率ヒートマップ、お手本ルート図鑑)
-        - Vol 4-5: casual層フロントエンド(テーマ起点入力、駐輪可否マップ、旅先モード)
-        - Vol 6+: endurance層(補給PC計画、グロス速度シミュ)、serious層(構造化ワークアウト連動)は将来サブスクモジュール
+        - マーカー基本セット(コンビニ・自転車店・信号をON/OFF切替可)
+
+        **Volt 2-3 (beginner/casual層拡張)**:
+        - beginner層フロントエンド(処方箋型UI、車道率ヒートマップ、お手本ルート図鑑、
+          時計表示+3色バー、認知補正メッセージ「(目安)」「ご家族には少し余裕を持って」)
+        - casual層フロントエンド(テーマ起点入力、駐輪可否マップ、旅先モード、
+          自然言語表示「だいたい12時頃ランチ着」、滞在時間ラベル)
+        - **離脱フォールバック計画エンジン**(共通インフラ化、案A) [debate-002 Q6]
+          - beginner: 輪行リカバリー=「いつでも輪行で帰れる心理的安全基地」
+          - 共通: 輪行可能駅+終電時刻+自転車店マーカー
+        - **ホームスポット卒業マイルストーンUI**(ソフト提案+自己申告、機械的アップグレード無し)
+          [debate-002 Q7]
+        - 「予定vs実績比較コンポーネント」時刻データソース版
+
+        **Volt 4-5 (拡張)**:
+        - 信号情報レイヤー Level 2 (OSM signalタグ個別取得、時間帯補正)
+        - endurance層基本機能 (補給ポイント時系列マッピング簡易版)
+
+        **Volt 6+ (将来サブスクモジュール、Pro tier想定)**:
+        - **endurance層フルグロス速度シミュ コア軸(1)-(3)** [debate-002 Q5]
+          - (1) PC通過時刻判定(動的再計算)
+          - (2) 補給ポイント時系列マッピング(完全版)
+          - (3) 仮眠予算配分(距離別・戦略別)
+        - serious層フル機能 (HRV/CTL/ATL/TSB連動、本番ペース配分±5分精度)
+        - 「予定vs実績比較コンポーネント」出力データソース版
+        - チーム練/集団走行モード(Race tier想定)
+
+        **Volt 7+ (留保、ユーザデータ見て順次追加)** [debate-002 Q5]:
+        - C-OVR-SUP 7軸の (4) GPS/ライト類のバッテリー予算
+        - C-OVR-SUP 7軸の (5) 雨天時のエスケープルート
+        - C-OVR-SUP 7軸の (6) 機材トラブル時の対応経路
+        - C-OVR-SUP 7軸の (7) DNF時の輪行帰宅計画 (Volt 2-3 の離脱フォールバック計画エンジンを拡張)
+        - PC penalty 属性の anchor optional 拡張(endurance BRM用途)
       confidence: medium
       evidence:
-        - source: "PO判定 (Round 3 Q3)"
+        - source: "PO判定 (debate-001 Round 3 Q3)"
           detail: "MVP範囲はhobby中心+ボルトごとに他層拡張を選択"
         - source: "debate-001 persona-hobby + persona-serious"
           detail: "MVP=hobby最適化+ARR後にPro追加の時間軸分離を両者が支持"
+        - source: "debate-002 Round 3 Q1-Q8"
+          detail: "Volt 1先取り(軽量グロス速度+3階層anchor+信号情報エンジン内部処理)、Volt 2-3卒業マイルストーン+離脱フォールバック計画、Volt 6+コア軸(1)-(3)、Volt 7+残り4軸という段階拡張が確定"
 
     monetization:
       id: P-MOD
@@ -299,17 +493,23 @@ canvas:
         MVPはFree・広告なし(BRouterセルフホストで運用コストを抑える)。
         ARR一定水準後に以下の有料モジュール追加を見込む:
         - HRV/CTL/ATL/TSB連動(serious向け、Pro tier想定)
+        - 本番ペース配分±5分精度モード(serious向け、Pro tier想定)
         - OAuth転送(Garmin/TrainingPeaks/Strava、Pro tier想定)
         - チーム練/集団走行モード(Race tier想定)
-        - PBP/LELロング行程計画(endurance向け、有料モジュール想定)
+        - PBP/LELロング行程計画 = C-OVR-SUP 7軸統合計画(endurance向け、有料モジュール想定)
         - 紙キューシートPDF高度版(endurance向け、有料モジュール想定)
+        - 「予定vs実績比較コンポーネント」出力データソース版(serious/Pro向け)
         無料コア機能を中級ホビー層が継続利用できることが大前提(Strava有料化で中級層の財布が破綻している市場文脈を踏まえる)。
+        無料コアには Volt 2-3 までの全機能(beginner/casual UI + 離脱フォールバック計画 +
+        ホームスポット卒業マイルストーン + 軽量グロス速度 + 双方向化逆算)を含める方針。
       confidence: low
       evidence:
-        - source: "PO判定 (Round 3 Q1, Q2)"
+        - source: "PO判定 (debate-001 Round 3 Q1, Q2)"
           detail: "HRV/CTL/ATLはMVP除外で将来有料モジュール、Free + 将来有料サブスクを採用"
         - source: "broadlistening_summary"
           detail: "Strava年7,800円(2023年10月)中級層離脱兆候、Coros/Wahooで無料代替可能の業界トレンド"
+        - source: "debate-002 Round 3 Q5"
+          detail: "endurance層フルグロス速度シミュ(7軸コア(1)-(3))は Volt 6+ サブスクモジュールスコープに位置づけ確定"
 
   # ===========================
   # ビジネス側(個人開発のため未検討)
@@ -343,6 +543,10 @@ relations:
     to: C-OVR-THM
     type: supports
     note: "カジュアル層の状況がテーマ起点探索課題を生む"
+  - from: C-SIT
+    to: C-OVR-TIME
+    type: supports
+    note: "中級以上+関連層の状況が所要時間見積もりギャップを生む(層横断)"
 
   # 顕在課題群 → 横断的潜在課題
   - from: C-OVR
@@ -352,7 +556,7 @@ relations:
   - from: C-OVR-SFT
     to: C-LAT
     type: derives
-    note: "初心者の安全不安も『自分用ルート不在』の現れ"
+    note: "初心者の安全不安+離脱フォールバック不在も『自分用ルート不在』の現れ"
   - from: C-OVR-SUP
     to: C-LAT
     type: derives
@@ -360,11 +564,29 @@ relations:
   - from: C-OVR-TRN
     to: C-LAT
     type: derives
-    note: "競技層の練習設計手間も『自分用ルート不在』の現れ"
+    note: "競技層の練習設計+期分け別有効時間管理手間も『自分用ルート不在』の現れ"
   - from: C-OVR-THM
     to: C-LAT
     type: derives
     note: "カジュアル層のテーマ起点不在も『自分用ルート不在』の現れ"
+  - from: C-OVR-TIME
+    to: C-LAT
+    type: derives
+    note: "所要時間見積もりギャップも『自分用ルート不在』の現れ(層横断)"
+
+  # 顕在課題間の関係
+  - from: C-OVR-TIME
+    to: C-OVR-SUP
+    type: supports
+    note: "C-OVR-TIME(所要時間見積もり)と C-OVR-SUP(7軸統合計画)は同じ計算エンジンを共有するが、認定イベントの有無で運用文脈が分かれる"
+  - from: C-OVR-SUP
+    to: C-OVR-SFT
+    type: supports
+    note: "endurance のDNF時輪行帰宅計画(C-OVR-SUP 7軸の(7))と beginner の輪行リカバリー(C-OVR-SFT)は同エンジン強度違いで実装可能(離脱フォールバック計画の共通インフラ化)"
+  - from: C-OVR-TIME
+    to: C-OVR-TRN
+    type: supports
+    note: "serious の本番ペース配分(区間通過タイム精度±5分)は C-OVR-TIME 内で扱い、Z2 Base練習の有効有酸素時間(中断除外)は C-OVR-TRN 内で扱う"
 
   # 潜在課題 → 目的・提案価値
   - from: C-LAT
@@ -374,13 +596,13 @@ relations:
   - from: C-LAT
     to: P-VAL
     type: derives
-    note: "潜在課題が層別UI+共通エンジン+プラグイン出口の価値を裏付ける"
+    note: "潜在課題が層別UI+共通エンジン+プラグイン出口+6要素抽象化レイヤーの価値を裏付ける"
 
   # 代替手段 → 提案価値
   - from: C-ALT
     to: P-VAL
     type: supports
-    note: "既存手段では層横断的自動生成ができないことが提案価値の差別化根拠"
+    note: "既存手段では層横断的自動生成+所要時間予測ができないことが提案価値の差別化根拠"
 
   # 目的 → ビジョン
   - from: P-PUR
@@ -392,7 +614,7 @@ relations:
   - from: P-VAL
     to: P-SOL
     type: derives
-    note: "層別UI+共通エンジン+プラグイン出口を BRouter+Leaflet+プロファイル別フロントエンド3-4種 で実現"
+    note: "層別UI+共通エンジン+プラグイン出口+6要素抽象化レイヤーを BRouter+Leaflet+プロファイル別フロントエンド3-4種+共通インフラ で実現"
 
   # 優位性 → ソリューション
   - from: P-ADV
@@ -404,11 +626,11 @@ relations:
   - from: P-MVP
     to: P-SOL
     type: derives
-    note: "MVPはhobby層フロントエンド+共通エンジンの最小構成で立ち上げ、ボルトごとに他層フロントエンド追加"
+    note: "MVPはhobby層フロントエンド+共通エンジン+層横断軽量機能(信号情報・軽量グロス速度・3階層anchor)の最小構成で立ち上げ、ボルトごとに他層フロントエンド+離脱フォールバック計画+卒業マイルストーン+endurance/seriousフル機能を段階追加"
   - from: P-MOD
     to: P-MVP
     type: supports
-    note: "Free + 将来有料サブスクモジュールでhobby中心MVPを成立させる課金モデル"
+    note: "Free + 将来有料サブスクモジュールでhobby中心MVPを成立させる課金モデル。無料コアに Volt 2-3 までの全機能を含める"
   - from: P-ADV
     to: P-MVP
     type: supports
