@@ -142,7 +142,13 @@ Step 2で設定したペルソナによる議論を実行する。
 
 #### Round 1: アイデア出し（並列）
 
-各ペルソナAgentを並列起動（Agent Teams, subagent_type: general-purpose, model: opus）し、各自の視点から仮説のアイデアを独立に出させる。
+各ペルソナAgentを並列起動（Agent Teams, subagent_type: general-purpose, model: sonnet）し、各自の視点から仮説のアイデアを独立に出させる。
+
+**モデル選択の指針:**
+
+- **ペルソナ役 SubAgent: sonnet を使用**。ロールプレイ・指示追従・当事者性表現は Sonnet で十分機能し、Agent Teams の構造的トークン消費(SubAgent ごとに独立 context window を保有、parent と合算してレートリミットに反映)を抑えられる
+- **ファシリテータ(main): opus を維持**。議論進行・収束判断・脱線検知・技術指摘の介入トリガー判断 + inbox pull に基づく集約議事録作成では長文一貫性と多段推論能力が必要なため
+- **品質低下兆候の監視**: F3(発言の交換可能性、固有語彙の均質化)・統合提案の質低下が Round 1 終了時の判定で観測された場合、当該 Round または特定論点を opus で再実行する fallback を検討する。Sonnet 運用が品質を維持できているかをラウンドごとに確認すること
 
 **各ペルソナAgentに渡す情報:**
 - 該当ペルソナの `.claude/personas/persona-<id>.yaml` の**全文**(attributes + checklist + broadlistening_summary を含む)
